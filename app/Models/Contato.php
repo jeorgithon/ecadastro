@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contato extends Model
 {
     use HasFactory;
+    protected $fillable= ['contato'];
     
     public function militar() {
 			return $this->belongsTo('\App\Models\Militar');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Viatura extends Model
 {
+    protected $fillable= ['placa', 'patrimonio', 'km', 'tipo', 'marca', 'modelo'];
     use HasFactory;
     
     public function registros() {

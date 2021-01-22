@@ -9,6 +9,8 @@ class Militar extends Model
 {
     use HasFactory;
     
+    protected $fillable= ['nomeCompelto', 'nomeGuerra', 'matricula', 'postoGraduacao', 'ome', 'permissao'];
+    
     public function contatos() {
 		return $this->hasMany('\App\Models\Contato');
 	}
