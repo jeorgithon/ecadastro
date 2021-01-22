@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Contato;
+use App\Models\Cidade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ContatoFactory extends Factory
+class CidadeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Contato::class;
+    protected $model = Cidade::class;
 
     /**
      * Define the model's default state.
@@ -21,13 +21,12 @@ class ContatoFactory extends Factory
      */
     public function definition()
     {
-        $id = random_int(1,10);
-        //$contato = Contato::find($id);
-
+        $vetorCIA = ['1ª CIA', '2ª CIA', '3ª CIA'];
+        $indece = random_int(0, 2);
+        $cia = $vetorCIA[$indece];
         return [
-            'contato' => $this->faker->phoneNumber,
-            'militar_id' => $id
-            
+            'companhia' => $cia,
+            'nome' => $this->faker->city
         ];
     }
 }

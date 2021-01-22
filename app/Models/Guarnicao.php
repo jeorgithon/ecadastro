@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guarnicao extends Model
 {
     use HasFactory;
+    protected $fillable = ['prefixo', 'descricao'];
     
     public function servicos() {
 		return $this->hasMany('\App\Models\Servico');

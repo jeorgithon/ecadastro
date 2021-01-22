@@ -17,11 +17,11 @@ class CreateViaturasTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('placa');
-            $table->string('patrimonio');
-            $table->bigInteger('km');
-            $table->string('tipo');
-            $table->string('marca');
-            $table->string('modelo');
+            $table->string('patrimonio')->nullable();
+            $table->bigInteger('km')->nullable();
+            $table->string('tipo')->nullable();
+            $table->string('marca')->nullable();
+            $table->string('modelo')->nullable();
         });
     }
 

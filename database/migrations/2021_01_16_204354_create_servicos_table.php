@@ -20,7 +20,7 @@ class CreateServicosTable extends Migration
             $table->date('dataFinal');
             $table->time('horaInicial');
             $table->time('horaFinal');
-            $table->string('Observacao')->nullable();
+            $table->string('observacao')->nullable();
             $table->string('nota')->nullable();
             
             $table->bigInteger('guarnicao_id');
