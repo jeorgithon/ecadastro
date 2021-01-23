@@ -16,12 +16,14 @@ class CreateMilitarsTable extends Migration
         Schema::create('militars', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nomeCompelto');
+            $table->string('nomeCompleto');
             $table->string('nomeGuerra');
             $table->string('matricula');
             $table->string('postoGraduacao');
             $table->string('ome')->nullable();
             $table->string('permissao');
+            $table->string('usuario');
+            $table->string('senha');
         });
     }
 

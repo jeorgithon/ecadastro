@@ -35,12 +35,14 @@ class MilitarFactory extends Factory
 
 
         return [
-            'nomeCompelto' => $this->faker->firstName,
+            'nomeCompleto' => $this->faker->firstName,
             'nomeGuerra' => $this->faker->lastName,
             'matricula' => $mat,
             'postoGraduacao' => $grad,
             'ome' => "9º BPM",
-            'permissao' => $permissao
+            'permissao' => $permissao,
+            'usuario' => $this->faker->userName,
+            'senha' =>$this->faker->password
             
             
         ];

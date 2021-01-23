@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MilitarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,9 @@ Route::get('/', function () {
 
 
 Route::get('/cadastroMilitar', [MilitarController::class, 'adicionar']);
+
+Route::post('/cadastroMilitar', [MilitarController::class, 'salvar']);
+Route::get('/listar', [MilitarController::class, 'listar']);
+Route::get('/removerMilitar/{id}', [MilitarController::class, 'remover']);
+Route::get('/editarMilitar/{id}', [MilitarController::class, 'getEditar']);
+Route::post('/editarMilitar', [MilitarController::class, 'editar']);

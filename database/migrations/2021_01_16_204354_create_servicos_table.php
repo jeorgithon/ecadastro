@@ -22,10 +22,10 @@ class CreateServicosTable extends Migration
             $table->string('nota')->nullable();
             
             $table->bigInteger('guarnicao_id');
-            $table->foreign('guarnicao_id')->references('id')->on('guarnicaos');
+            $table->foreign('guarnicao_id')->references('id')->on('guarnicaos')->onDelete('cascade');
             
             $table->bigInteger('cidade_id');
-            $table->foreign('cidade_id')->references('id')->on('cidades');
+            $table->foreign('cidade_id')->references('id')->on('cidades')->onDelete('cascade');
         });
     }
 

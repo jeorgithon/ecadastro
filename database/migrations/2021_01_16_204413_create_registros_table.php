@@ -21,13 +21,13 @@ class CreateRegistrosTable extends Migration
             $table->boolean('motorista');
             
             $table->bigInteger('militar_id');
-            $table->foreign('militar_id')->references('id')->on('militars');
+            $table->foreign('militar_id')->references('id')->on('militars')->onDelete('cascade');
             
             $table->bigInteger('viatura_id');
-            $table->foreign('viatura_id')->references('id')->on('viaturas');
+            $table->foreign('viatura_id')->references('id')->on('viaturas')->onDelete('cascade');
             
             $table->bigInteger('servico_id');
-            $table->foreign('servico_id')->references('id')->on('servicos');
+            $table->foreign('servico_id')->references('id')->on('servicos')->onDelete('cascade');
         });
     }
 

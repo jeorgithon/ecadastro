@@ -19,7 +19,7 @@ class CreateContatosTable extends Migration
             $table->string('contato');
             
             $table->bigInteger('militar_id');
-            $table->foreign('militar_id')->references('id')->on('militars');
+            $table->foreign('militar_id')->references('id')->on('militars')->onDelete('cascade');
         });
     }
 

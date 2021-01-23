@@ -21,6 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <a href="/cadastroMilitar"> Cadastro de Militar </a>
+        <a href="/cadastroMilitar"> Cadastro de Militar </a> <br>
+        <a href="/listar"> listar Militares </a>
     </body>
 </html>
