@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Servico;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ServicoFactory extends Factory
@@ -20,14 +21,17 @@ class ServicoFactory extends Factory
      * @return array
      */
     public function definition()
+
     {
+        
+        $inicial = date('Y-m-d H:i:s');
+        $incicialMaisUM = mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1, date('Y'));
+        $final = date('Y-m-d H:i:s', $incicialMaisUM);
         return [
-            'dataInicial' => $this->faker->date,
-            'dataFinal' => $this->faker->date,
-            'horaInicial' => $this->faker->time,
-            'horaFinal' => $this->faker->time,
-            'guarnicao_id' => 1,
-            'cidade_id' => 2
+            'dataHoraInicial' => $inicial,
+            'dataHoraFinal' => $final,
+            'guarnicao_id' => random_int(1,10),
+            'cidade_id' => random_int(1,10)
         ];
     }
 }

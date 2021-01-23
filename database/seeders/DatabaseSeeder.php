@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             ViaturaSeeder::class, 
             GuarnicaoSeeder::class,
             CidadeSeeder::class,
-            ServicoSeeder::class
+            ServicoSeeder::class,
+            RegistroSeeder::class
         ]);
     }
 }

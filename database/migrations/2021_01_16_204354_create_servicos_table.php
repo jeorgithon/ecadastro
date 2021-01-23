@@ -16,10 +16,8 @@ class CreateServicosTable extends Migration
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('dataInicial');
-            $table->date('dataFinal');
-            $table->time('horaInicial');
-            $table->time('horaFinal');
+            $table->dateTime('dataHoraInicial');
+            $table->dateTime('dataHoraFinal');
             $table->string('observacao')->nullable();
             $table->string('nota')->nullable();
             

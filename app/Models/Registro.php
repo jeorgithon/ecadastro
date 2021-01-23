@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Registro extends Model
 {
     use HasFactory;
-    
+    protected $fillable = ['km', 'comandante', 'motorista'];
     public function servico() {
 		return $this->belongsTo('\App\Models\Servico');
 	}
