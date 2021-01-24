@@ -12,17 +12,14 @@ class MilitarController extends Controller
     }
     
     public function salvar(Request $r){
-       Militar::create($r->all());
-    //    $contato =new \App\Models\Contato();
-    // //    $contato->cotato =$r->celular;
-    // //    $contato->militar_id= $r->id;
-    // //    $contato->save();
-    // //    $contato->cotato =$r->residecial;
-    // //    $contato->save();
-    //     $t = Militar::find($r->id);
-    //     $t->contatos()->contato = $r->celular;
-    //     $t->update();
-		return redirect('listar');
+      try {
+        \App\Validator\MilitarValidator::validate($r->all());
+        Militar::create($r->all());
+        return redirect('listar');
+      } catch (\App\Validator\ValidatorException $th) {
+        return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
+      }
+      
     }
     
     public function listar(){
