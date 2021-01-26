@@ -15,7 +15,7 @@ class MilitarController extends Controller
       try {
         \App\Validator\MilitarValidator::validate($r->all());
         Militar::create($r->all());
-        return redirect('listar');
+        return redirect('listar/militar');
       } catch (\App\Validator\ValidatorException $th) {
         return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
       }
@@ -34,7 +34,7 @@ class MilitarController extends Controller
     //    $militar->contatos()->delete();
     //    $militar->delete()->all();
         Militar::destroy($id);
-         return redirect('listar');
+         return redirect('listar/militar');
      }
 
      public function getEditar($id){
@@ -52,7 +52,7 @@ class MilitarController extends Controller
         $militar->permissao = $r->permissao;
         $militar->update();
            
-        return redirect('listar');
+        return redirect('listar/militar');
         }
         
 }

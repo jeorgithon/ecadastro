@@ -22,6 +22,10 @@
     </head>
     <body class="antialiased">
         <a href="/cadastroMilitar"> Cadastro de Militar </a> <br>
-        <a href="/listar"> listar Militares </a>
+        <a href="/listar/militar"> Listar Militares </a> <br>
+        <a href="/cadastro/viatura"> Cadastro de viatura </a> <br>
+        <a href="/listar/viatura"> Listar viaturas </a> <br>
+        <a href="/cadastro/guarnicao"> Cadastro de guarnição </a> <br>
+        <a href="/listar/guarnicao"> Listar guarnições </a> <br>
     </body>
 </html>

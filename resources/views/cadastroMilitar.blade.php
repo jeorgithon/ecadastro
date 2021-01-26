@@ -94,7 +94,7 @@
           <!--  Celular: <input type="text" name="celular" /> <br>
             Telefone Residecial: <input type="text" name="fixo" /> <br> -->
 
-            <input type="submit" value="CadastroMilitar">
+            <input type="submit" value="Salvar">
         </form>
     </body>
 </html>

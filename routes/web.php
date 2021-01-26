@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GuarnicaoController;
 use App\Http\Controllers\MilitarController;
+use App\Http\Controllers\ViaturaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +22,26 @@ Route::get('/', function () {
 
 
 
-
+//rotas referente a entidade Militar
 Route::get('/cadastroMilitar', [MilitarController::class, 'adicionar']);
-
 Route::post('/cadastroMilitar', [MilitarController::class, 'salvar']);
-Route::get('/listar', [MilitarController::class, 'listar']);
+Route::get('/listar/militar', [MilitarController::class, 'listar']);
 Route::get('/removerMilitar/{id}', [MilitarController::class, 'remover']);
 Route::get('/editarMilitar/{id}', [MilitarController::class, 'getEditar']);
 Route::post('/editarMilitar', [MilitarController::class, 'editar']);
+
+//rotas referente a entiade Viatura
+Route::get('/cadastro/viatura', [ViaturaController::class, 'adicionar']);
+Route::post('/cadastro/viatura', [ViaturaController::class, 'salvar']);
+Route::get('/listar/viatura', [ViaturaController::class, 'listar']);
+Route::get('/remover/viatura/{id}', [ViaturaController::class, 'remover']);
+Route::get('/editar/viatura/{id}', [ViaturaController::class, 'getEditar']);
+Route::post('/editar/viatura', [ViaturaController::class, 'editar']);
+
+//rotas referente a entiade guarnição
+Route::get('/cadastro/guarnicao', [GuarnicaoController::class, 'adicionar']);
+Route::post('/cadastro/guarnicao', [GuarnicaoController::class, 'salvar']);
+Route::get('/listar/guarnicao', [GuarnicaoController::class, 'listar']);
+Route::get('/remover/guarnicao/{id}', [GuarnicaoController::class, 'remover']);
+Route::get('/editar/guarnicao/{id}', [GuarnicaoController::class, 'getEditar']);
+Route::post('/editar/guarnicao', [GuarnicaoController::class, 'editar']);
