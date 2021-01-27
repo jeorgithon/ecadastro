@@ -9,8 +9,8 @@ class Cidade extends Model
 {
     use HasFactory;
     
-    protected $fellble = ['companhia', 'nome'];
+    protected $fillable = ['companhia', 'nome'];
     public function servicos() {
-		  return $this->hasMany('\App\Models\Servico');
+		return $this->hasMany('\App\Models\Servico');
 	}
 }

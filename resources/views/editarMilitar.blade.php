@@ -27,6 +27,9 @@
             Usuário: <input type="text" name="usuario" value="{{$militar->usuario}}"/> <br>
             Senha: <input type="text" name="senha" value="{{$militar->senha}}"/> <br>
 
+            <br>
+            
+
             <input type="submit" value="Salvar">
         </form>
     </body>

@@ -27,5 +27,9 @@
         <a href="/listar/viatura"> Listar viaturas </a> <br>
         <a href="/cadastro/guarnicao"> Cadastro de guarnição </a> <br>
         <a href="/listar/guarnicao"> Listar guarnições </a> <br>
+        <a href="/cadastro/cidade"> Cadastro de cidade </a> <br>
+        <a href="/listar/cidade"> Listar cidades </a> <br>
+        <a href="/cadastro/servico"> Cadastro de Serviço </a> <br>
+        <a href="/listar/servico"> Listar Serviço </a> <br>
     </body>
 </html>

@@ -89,10 +89,8 @@
             @enderror
         </div>   
             
-            
-            <br>
-          <!--  Celular: <input type="text" name="celular" /> <br>
-            Telefone Residecial: <input type="text" name="fixo" /> <br> -->
+        Celular: <input type="text" name="celular" /> <br>
+        Telefone Residecial: <input type="text" name="fixo" /> <br> 
 
             <input type="submit" value="Salvar">
         </form>

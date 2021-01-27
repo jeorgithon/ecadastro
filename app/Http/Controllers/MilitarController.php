@@ -14,8 +14,12 @@ class MilitarController extends Controller
     public function salvar(Request $r){
       try {
         \App\Validator\MilitarValidator::validate($r->all());
-        Militar::create($r->all());
-        return redirect('listar/militar');
+       $militar =  Militar::create($r->all());
+       
+       $militar->contatos()->saveMany([ new \App\Models\Contato(['contato' => $r->celular]),
+       new \App\Models\Contato(['contato' => $r->fixo])]);
+       
+       return redirect('listar/militar');
       } catch (\App\Validator\ValidatorException $th) {
         return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
       }
@@ -30,10 +34,7 @@ class MilitarController extends Controller
 
 
     public function remover($id){
-    //    
-    //    $militar->contatos()->delete();
-    //    $militar->delete()->all();
-        Militar::destroy($id);
+         Militar::destroy($id);
          return redirect('listar/militar');
      }
 

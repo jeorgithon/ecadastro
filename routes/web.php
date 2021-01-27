@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\GuarnicaoController;
 use App\Http\Controllers\MilitarController;
+use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\ViaturaController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +47,19 @@ Route::get('/listar/guarnicao', [GuarnicaoController::class, 'listar']);
 Route::get('/remover/guarnicao/{id}', [GuarnicaoController::class, 'remover']);
 Route::get('/editar/guarnicao/{id}', [GuarnicaoController::class, 'getEditar']);
 Route::post('/editar/guarnicao', [GuarnicaoController::class, 'editar']);
+
+//rotas referente a entiade cidade
+Route::get('/cadastro/cidade', [CidadeController::class, 'adicionar']);
+Route::post('/cadastro/cidade', [CidadeController::class, 'salvar']);
+Route::get('/listar/cidade', [CidadeController::class, 'listar']);
+Route::get('/remover/cidade/{id}', [CidadeController::class, 'remover']);
+Route::get('/editar/cidade/{id}', [CidadeController::class, 'getEditar']);
+Route::post('/editar/cidade', [CidadeController::class, 'editar']);
+
+//rotas referente a entiade serviço
+Route::get('/cadastro/servico', [ServicoController::class, 'adicionar']);
+Route::post('/cadastro/servico', [ServicoController::class, 'salvar']);
+Route::get('/listar/servico', [ServicoController::class, 'listar']);
+Route::get('/remover/servico/{id}', [ServicoController::class, 'remover']);
+Route::get('/editar/servico/{id}', [ServicoController::class, 'getEditar']);
+Route::post('/editar/servico', [ServicoController::class, 'editar']);
