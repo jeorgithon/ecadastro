@@ -4,23 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Cadastro de Militar</title>
+        <title>Cadastro de Serviço</title>
 
         
 
         
     </head>
     <body class="antialiased">
-        <h1> Lista de viatura</h1>
+        <h1> Lista de Serviços</h1>
 
         <a href="/">Página Inicial</a>
        
         <ul>
             @foreach ($lista as $item)
-            <li><a href="/editar/viatura/{{$item->id}}"> {{$item->patrimonio}}  {{$item->placa}}  {{$item->modelo}} {{$item->km}}</a>  <a href="/remover/viatura/{{$item->id}}"> X </a> </li>
+            <li><a href="/editar/servico/{{$item->id}}"> {{$item->guarnicao->prefixo}}  {{$item->cidade->nome}}</a>  <a href="/remover/servico/{{$item->id}}"> X </a> </li>
             @endforeach
         </ul>
         
-        <a href="/cadastro/viatura"> Cadastrar </a>
+        <a href="/cadastro/servico"> Cadastrar </a>
     </body>
 </html>

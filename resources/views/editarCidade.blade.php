@@ -6,6 +6,8 @@
 
         <title>Cadastro de Cidade</title>
 
+        <a href="/">Página Inicial</a>
+
         
     </head>
     <body class="antialiased">

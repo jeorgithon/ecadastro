@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Servico extends Model
 {
     use HasFactory;
-	protected $fillable = ['dataHoraInicial', 'dataHoraFinal', 'observacao', 'nota'];
+	protected $fillable = ['dataHoraInicial', 'dataHoraFinal', 'observacao', 'nota', 'guarnicao_id', 'cidade_id'];
 	
     public function cidade() {
 		return $this->belongsTo('\App\Models\Cidade');

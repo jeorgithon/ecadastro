@@ -10,48 +10,61 @@
     </head>
     <body class="antialiased">
         <h1> Cadastrar Serviço</h1>
+
+        <a href="/">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/servico">
             
             @csrf<!--previne contra ataques, o laravel exige a tag-->
             <div>
-            Data de início: <input type="date" name="dataInicial" value="{{old('dataInicial')}}" class="form-control @error('dataInicial')
+            Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{old('dataHoraInicial')}}" class="form-control @error('dataHoraInicial')
             is-invalid @enderror"/> <br>
-            @error('dataInicial')
+            @error('dataHoraInicial')
                 <span>
                     <strong>{{$message}}</strong>    
                 </span>    
             @enderror
              </div>
-             
+             <br>
             <div>
-            Data de termino: <input type="date" name="dataFinal" value="{{old('dataFinal')}}" class="form-control @error('dataFinal')
+            Data de termino: <input type="datetime-local" name="dataHoraFinal" value="{{old('dataHoraFinal')}}" class="form-control @error('dataHoraFinal')
             is-invalid @enderror"/> <br>
-            @error('dataFinal')
+            @error('dataHoraFinal')
                 <span>
                     <strong>{{$message}}</strong>    
                 </span>    
             @enderror
              </div>
-             <div>
-                Hora de início: <input type="time" name="horaInicial" value="{{old('horaInicial')}}" class="form-control @error('horaInicial')
-                is-invalid @enderror"/> <br>
-                @error('horaInicial')
-                    <span>
-                        <strong>{{$message}}</strong>    
-                    </span>    
-                @enderror
-                 </div>
-             <div>
-                Hora de termino: <input type="time" name="horaFinal" value="{{old('horaFinal')}}" class="form-control @error('horaFinal')
-                is-invalid @enderror"/> <br>
-                @error('horaFinal')
-                    <span>
-                        <strong>{{$message}}</strong>    
-                    </span>    
-                @enderror
+             <br>
+            
+            <div>
+               Guarnição <select name="guarnicao_id" autofocus>
+                    <option>Escolha uma Guarnição</option>
+                    
+                    @foreach($guarnicoes as $g)
+                        @if('guarnicao_id' == $g->id)
+                            <option value="{{$g->id}}" selected="selected">{{$g->prefixo}}</option>
+                        @else
+                            <option value="{{$g->id}}">{{$g->prefixo}}</option>
+                        @endif
+                    @endforeach
+                </select>
             </div>
-         
+            <br>
+            <div>
+                Cidade <select name="cidade_id" autofocus>
+                     <option>Escolha uma Cidade</option>
+                     
+                     @foreach($cidades as $c)
+                         @if('cidade_id' == $c->id)
+                             <option value="{{$c->id}}" selected="selected">{{$c->nome}}</option>
+                         @else
+                             <option value="{{$c->id}}">{{$c->nome}}</option>
+                         @endif
+                     @endforeach
+                 </select>
+             </div>
+             <br>
          
             <input type="submit" value="Salvar">
         </form>

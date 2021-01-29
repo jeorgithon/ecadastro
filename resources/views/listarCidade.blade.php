@@ -12,6 +12,8 @@
     </head>
     <body class="antialiased">
         <h1> Lista de Cidade</h1>
+
+        <a href="/">Página Inicial</a>
        
         <ul>
             @foreach ($lista as $item)

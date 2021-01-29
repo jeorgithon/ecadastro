@@ -10,6 +10,8 @@
     </head>
     <body class="antialiased">
         <h1> Cadastrar Viatura</h1>
+
+        <a href="/">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/guarnicao">
             
