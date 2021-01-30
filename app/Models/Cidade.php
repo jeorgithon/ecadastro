@@ -10,6 +10,12 @@ class Cidade extends Model
     use HasFactory;
     
     protected $fillable = ['companhia', 'nome'];
+
+    public static $rules = ['companhia'=>'required', 'nome'=>'required'];
+	
+  	public static $messages = ['companhia.*'=>'Compo Obrigatório', 'nome.*'=>'Compo Obrigatório'];
+	
+
     public function servicos() {
 		return $this->hasMany('\App\Models\Servico');
 	}

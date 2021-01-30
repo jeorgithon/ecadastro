@@ -23,19 +23,13 @@ class ServicoController extends Controller
     public function salvar(Request $r)
     {
         try {
-            //  \App\Validator\MilitarValidator::validate($r->all());
+            \App\Validator\ServicoValidator::validate($r->all());
            Servico::create($r->all());
-        //    $servico = new \App\Models\Servico;
-        //    $servico->guarnicao_id = $r->guarnicao_id;
-        //    $servico->cidade_id = $r->cidade_id;
-        //    $servico->dataHoraInicial= $r->dataInicial." ".$r->horaInicial;
-        //    $servico->dataHoraFinal= $r->dataFinal." ".$r->horaFinal;
-        //     $servico->save();
            return redirect('listar/servico');
         } catch (\App\Validator\ValidatorException $th) {
             $listGuarnicao = Guarnicao::all();
             $listCidade = Cidade::all();
-            return redirect('cadastroServico')->with(['guarnicoes'=>$listGuarnicao, 'cidades'=>$listCidade])
+            return redirect('cadastro/servico')->with(['guarnicoes'=>$listGuarnicao, 'cidades'=>$listCidade])
             -> withErrors($th->getValidator())->withInput();
         }
     }
@@ -65,7 +59,7 @@ class ServicoController extends Controller
 
         $datefinal = new DateTime($servico->dataHorafinal);
         $datefinal =  $datefinal->format('Y-m-d\TH:i');
-       //dd($date);
+       //dd($servico->observacao);
         
        return view('editarServico', ['servico' => $servico, 'cidades'=>$listCidade,
         'guarnicoes'=>$listGuarnicao, 'inicio'=>$dateinicial, 'fim'=>$datefinal]);

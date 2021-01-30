@@ -2,14 +2,13 @@
 
 namespace App\Validator;
 
+use App\Models\Cidade;
 
-use App\Models\Viatura;
-
-class ViaturaValidator extends \Exception
+class CidadeValidator extends \Exception
 {
     
     public static function validate($data){
-        $validator = \Validator::make($data, Viatura::$rules, Viatura::$messages);
+        $validator = \Validator::make($data, Cidade::$rules, Cidade::$messages);
 
         if(!$validator->errors()->isEmpty() )
         {

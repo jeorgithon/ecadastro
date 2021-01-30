@@ -14,6 +14,7 @@ class MilitarController extends Controller
     public function salvar(Request $r){
       try {
         \App\Validator\MilitarValidator::validate($r->all());
+
        $militar =  Militar::create($r->all());
        
        $militar->contatos()->saveMany([ new \App\Models\Contato(['contato' => $r->celular]),

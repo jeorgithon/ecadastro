@@ -14,11 +14,11 @@ class CidadeController extends Controller
 
     public function salvar(Request $r){
         try {
-        //  \App\Validator\MilitarValidator::validate($r->all());
+         \App\Validator\CidadeValidator::validate($r->all());
             Cidade::create($r->all());
             return redirect('listar/cidade');
         } catch (\App\Validator\ValidatorException $th) {
-            return redirect('cadastroCidade')->withErrors($th->getValidator())->withInput();
+            return redirect('cadastro/cidade')->withErrors($th->getValidator())->withInput();
         }
         
       }

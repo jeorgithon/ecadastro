@@ -13,11 +13,11 @@ class GuarnicaoController extends Controller
 
     public function salvar(Request $r){
         try {
-        //  \App\Validator\MilitarValidator::validate($r->all());
+        \App\Validator\GuarnicaoValidator::validate($r->all());
           Guarnicao::create($r->all());
         return redirect('listar/guarnicao');
         } catch (\App\Validator\ValidatorException $th) {
-          return redirect('cadastroGuarnicao')->withErrors($th->getValidator())->withInput();
+          return redirect('cadastro/guarnicao')->withErrors($th->getValidator())->withInput();
         }
         
       }

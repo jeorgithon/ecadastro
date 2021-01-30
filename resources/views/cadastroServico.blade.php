@@ -38,7 +38,7 @@
              <br>
             
             <div>
-               Guarnição <select name="guarnicao_id" autofocus>
+               Guarnição <select name="guarnicao_id" autofocus >
                     <option>Escolha uma Guarnição</option>
                     
                     @foreach($guarnicoes as $g)
@@ -49,10 +49,16 @@
                         @endif
                     @endforeach
                 </select>
+                <br>
+                 @error('guarnicao_id')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
             </div>
             <br>
             <div>
-                Cidade <select name="cidade_id" autofocus>
+                Cidade <select name="cidade_id" autofocus >
                      <option>Escolha uma Cidade</option>
                      
                      @foreach($cidades as $c)
@@ -63,8 +69,18 @@
                          @endif
                      @endforeach
                  </select>
+                 <br>
+                 @error('cidade_id')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
              </div>
              <br>
+             <div>
+                Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" value="{{old('observacao')}}" class="form-control @error('observacao')
+                is-invalid @enderror"></textarea> <br>
+             </div>
          
             <input type="submit" value="Salvar">
         </form>

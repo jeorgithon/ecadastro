@@ -13,12 +13,12 @@ class ViaturaController extends Controller
 
     public function salvar(Request $r){
         try {
-        //  \App\Validator\MilitarValidator::validate($r->all());
+        \App\Validator\ViaturaValidator::validate($r->all());
           Viatura::create($r->all());
-          echo "salvou";
+         
         return redirect('listar/viatura');
         } catch (\App\Validator\ValidatorException $th) {
-          return redirect('cadastroViatura')->withErrors($th->getValidator())->withInput();
+          return redirect('cadastro/viatura')->withErrors($th->getValidator())->withInput();
         }
         
       }

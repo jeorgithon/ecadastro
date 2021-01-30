@@ -67,6 +67,11 @@
                      </select>
                  </div>
                  <br>
+                 <div>
+                    Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" aria-valuetext="{{$servico->observacao}}"  class="form-control @error('observacao')
+                    is-invalid @enderror"></textarea> <br>
+                 </div>
+                 <br>
          
             <input type="submit" value="Salvar">
         </form>
