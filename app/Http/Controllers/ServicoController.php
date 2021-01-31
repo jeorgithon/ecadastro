@@ -57,9 +57,9 @@ class ServicoController extends Controller
         $dateinicial = new DateTime($servico->dataHoraInicial);
         $dateinicial =  $dateinicial->format('Y-m-d\TH:i');
 
-        $datefinal = new DateTime($servico->dataHorafinal);
+        $datefinal = new DateTime($servico->dataHoraFinal);
         $datefinal =  $datefinal->format('Y-m-d\TH:i');
-       //dd($servico->observacao);
+    //    dd($servico->dataHoraFinal);
         
        return view('editarServico', ['servico' => $servico, 'cidades'=>$listCidade,
         'guarnicoes'=>$listGuarnicao, 'inicio'=>$dateinicial, 'fim'=>$datefinal]);
