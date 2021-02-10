@@ -4,25 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Militar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MilitarController extends Controller
 {
     public function adicionar(){
-		return view('cadastroMilitar');
+      $this->authorize('create', \App\Models\Militar::class);
+		  return view('cadastroMilitar');
     }
     
     public function salvar(Request $r){
       try {
         \App\Validator\MilitarValidator::validate($r->all());
-
+        
+        
        $militar =  Militar::create($r->all());
        
        $militar->contatos()->saveMany([ new \App\Models\Contato(['contato' => $r->celular]),
        new \App\Models\Contato(['contato' => $r->fixo])]);
+
+       //cadastro do user
+       $user = new \App\Models\User();
+       $user->name = $r->nomeGuerra;
+       $user->email = $r->email; 
+       $user->password = Hash::make($r->matricula);;
+       $user->save();
        
        return redirect('listar/militar');
       } catch (\App\Validator\ValidatorException $th) {
-        return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
+        
+       return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
       }
       
     }
@@ -53,7 +64,7 @@ class MilitarController extends Controller
         $militar->ome = $r->ome;
         $militar->permissao = $r->permissao;
         $militar->update();
-           
+        
         return redirect('listar/militar');
         }
         

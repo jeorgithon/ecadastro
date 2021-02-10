@@ -26,8 +26,8 @@
             Posto/Graduação: <input type="text" name="postoGraduacao" value="{{$militar->postoGraduacao}}"/> <br>
             OME: <input type="text" name="ome" value="{{$militar->ome}}"/> <br>
             Permissão: <input type="text" name="permissao" value="{{$militar->permissao}}"/> <br>
-            Usuário: <input type="text" name="usuario" value="{{$militar->usuario}}"/> <br>
-            Senha: <input type="text" name="senha" value="{{$militar->senha}}"/> <br>
+            Email: <input type="text" name="email" value="{{$militar->email}}"/> <br>
+            
 
             <br>
             

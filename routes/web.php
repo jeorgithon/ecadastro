@@ -22,6 +22,12 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::group(['middleware' => ['auth:web']], function () {
+    
 
 
 //rotas referente a entidade Militar
@@ -31,6 +37,8 @@ Route::get('/listar/militar', [MilitarController::class, 'listar']);
 Route::get('/removerMilitar/{id}', [MilitarController::class, 'remover']);
 Route::get('/editarMilitar/{id}', [MilitarController::class, 'getEditar']);
 Route::post('/editarMilitar', [MilitarController::class, 'editar']);
+
+
 
 //rotas referente a entiade Viatura
 Route::get('/cadastro/viatura', [ViaturaController::class, 'adicionar']);
@@ -63,3 +71,13 @@ Route::get('/listar/servico', [ServicoController::class, 'listar']);
 Route::get('/remover/servico/{id}', [ServicoController::class, 'remover']);
 Route::get('/editar/servico/{id}', [ServicoController::class, 'getEditar']);
 Route::post('/editar/servico', [ServicoController::class, 'editar']);
+
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

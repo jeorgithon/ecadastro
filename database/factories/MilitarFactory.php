@@ -41,8 +41,7 @@ class MilitarFactory extends Factory
             'postoGraduacao' => $grad,
             'ome' => "9º BPM",
             'permissao' => $permissao,
-            'usuario' => $this->faker->userName,
-            'senha' =>$this->faker->password
+            'email' => $this->faker->email,
             
             
         ];

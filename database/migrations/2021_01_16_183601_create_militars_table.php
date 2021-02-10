@@ -22,8 +22,7 @@ class CreateMilitarsTable extends Migration
             $table->string('postoGraduacao');
             $table->string('ome')->nullable();
             $table->string('permissao');
-            $table->string('usuario');
-            $table->string('senha');
+            $table->string('email');
         });
     }
 

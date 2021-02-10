@@ -75,21 +75,14 @@
             @enderror
         </div>
         <div>
-            Usuário: <input type="text" name="usuario" value="{{old('usuario')}}"/> <br>
-            @error('usuario')
+            Email: <input type="text" name="email" value="{{old('email')}}"/> <br>
+            @error('email')
             <span>
                 <strong>{{$message}}</strong>    
             </span>    
             @enderror
         </div>   
-        <div>
-            Senha: <input type="text" name="senha" /> <br>
-            @error('senha')
-            <span>
-                <strong>{{$message}}</strong>    
-            </span>    
-            @enderror
-        </div>   
+           
             
         Celular: <input type="text" name="celular" /> <br>
         Telefone Residecial: <input type="text" name="fixo" /> <br> 
