@@ -2,10 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
-class MilitarPolicy
+class CidadePolicy
 {
     use HandlesAuthorization;
 
@@ -34,5 +35,4 @@ class MilitarPolicy
     public function view(){
         return Auth::user()->permissao == 'admin';
     }
-
 }

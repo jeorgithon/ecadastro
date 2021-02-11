@@ -2,10 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
-class MilitarPolicy
+class ServicoPolicy
 {
     use HandlesAuthorization;
 
@@ -20,7 +21,7 @@ class MilitarPolicy
     }
 
     public function create(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->permissao == 'admin' || Auth::user()->permissao == 'user';
     }
 
     public function update(){
@@ -34,5 +35,4 @@ class MilitarPolicy
     public function view(){
         return Auth::user()->permissao == 'admin';
     }
-
 }

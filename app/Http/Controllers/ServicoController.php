@@ -16,21 +16,20 @@ class ServicoController extends Controller
         $listcidade = Cidade::all();
         $listguarnicao = Guarnicao::all();
 
-        return view('cadastroServico', ['cidades'=>$listcidade, 'guarnicoes'=>$listguarnicao]);
-
+        return view('cadastroServico', ['cidades' => $listcidade, 'guarnicoes' => $listguarnicao]);
     }
 
     public function salvar(Request $r)
     {
         try {
             \App\Validator\ServicoValidator::validate($r->all());
-           Servico::create($r->all());
-           return redirect('listar/servico');
+            Servico::create($r->all());
+            return redirect('listar/servico');
         } catch (\App\Validator\ValidatorException $th) {
             $listGuarnicao = Guarnicao::all();
             $listCidade = Cidade::all();
-            return redirect('cadastro/servico')->with(['guarnicoes'=>$listGuarnicao, 'cidades'=>$listCidade])
-            -> withErrors($th->getValidator())->withInput();
+            return redirect('cadastro/servico')->with(['guarnicoes' => $listGuarnicao, 'cidades' => $listCidade])
+                ->withErrors($th->getValidator())->withInput();
         }
     }
 
@@ -53,16 +52,18 @@ class ServicoController extends Controller
         $listCidade = Cidade::all();
         $listGuarnicao = Guarnicao::all();
         $servico =  Servico::find($id);
-        
+
         $dateinicial = new DateTime($servico->dataHoraInicial);
         $dateinicial =  $dateinicial->format('Y-m-d\TH:i');
 
         $datefinal = new DateTime($servico->dataHoraFinal);
         $datefinal =  $datefinal->format('Y-m-d\TH:i');
-    //    dd($servico->dataHoraFinal);
-        
-       return view('editarServico', ['servico' => $servico, 'cidades'=>$listCidade,
-        'guarnicoes'=>$listGuarnicao, 'inicio'=>$dateinicial, 'fim'=>$datefinal]);
+        //    dd($servico->dataHoraFinal);
+
+        return view('editarServico', [
+            'servico' => $servico, 'cidades' => $listCidade,
+            'guarnicoes' => $listGuarnicao, 'inicio' => $dateinicial, 'fim' => $datefinal
+        ]);
     }
 
     public function editar(Request $r)

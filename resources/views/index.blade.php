@@ -19,8 +19,20 @@
                 font-family: 'Nunito';
             }
         </style>
+         
     </head>
     <body class="antialiased">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            <br>
         <a href="/cadastroMilitar"> Cadastro de Militar </a> <br>
         <a href="/listar/militar"> Listar Militares </a> <br>
         <a href="/cadastro/viatura"> Cadastro de viatura </a> <br>
@@ -31,6 +43,6 @@
         <a href="/listar/cidade"> Listar cidades </a> <br>
         <a href="/cadastro/servico"> Cadastro de Serviço </a> <br>
         <a href="/listar/servico"> Listar Serviço </a> <br>
-        <h3>Teste Git</h3>
+        
     </body>
 </html>
