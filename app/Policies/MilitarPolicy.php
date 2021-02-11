@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +20,6 @@ class MilitarPolicy
     }
 
     public function create(){
-        return Auth::user()->name == 'jeorgithon';
+        return Auth::user()->permissao == 'admin';
     }
 }

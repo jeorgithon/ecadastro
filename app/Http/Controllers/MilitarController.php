@@ -27,7 +27,8 @@ class MilitarController extends Controller
        $user = new \App\Models\User();
        $user->name = $r->nomeGuerra;
        $user->email = $r->email; 
-       $user->password = Hash::make($r->matricula);;
+       $user->password = Hash::make($r->matricula);
+       $user->permissao = $r->permissao;
        $user->save();
        
        return redirect('listar/militar');

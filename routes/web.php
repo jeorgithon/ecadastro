@@ -26,9 +26,9 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::group(['middleware' => ['auth:web']], function () {
-    
 
+    
+Route::group(['middleware' => ['auth:web']], function () {
 
 //rotas referente a entidade Militar
 Route::get('/cadastroMilitar', [MilitarController::class, 'adicionar']);
