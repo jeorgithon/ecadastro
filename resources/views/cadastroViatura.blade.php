@@ -11,7 +11,7 @@
     <body class="antialiased">
         <h1> Cadastrar Viatura</h1>
 
-        <a href="/">Página Inicial</a>
+        <a href="/index">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/viatura">
             
@@ -58,7 +58,7 @@
             @enderror
         </div>  
         <div>
-            KM: <input type="text" name="km" value="{{old('km')}}"/> <br>
+            KM: <input type="number" name="km" value="{{old('km')}}"/> <br>
             @error('km')
             <span>
                 <strong>{{$message}}</strong>    

@@ -13,7 +13,7 @@
     <body class="antialiased">
         <h1> Editar Cadastro</h1>
 
-        <a href="/">Página Inicial</a>
+        <a href="/index">Página Inicial</a>
        
         <form method= "POST" action="/editarMilitar">
             

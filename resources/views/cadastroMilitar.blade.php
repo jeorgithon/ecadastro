@@ -20,7 +20,7 @@
     <body class="antialiased">
         <h1> Cadastrar Pessoa</h1>
 
-        <a href="/">Página Inicial</a>
+        <a href="/index">Página Inicial</a>
        
         <form method= "POST" action="/cadastroMilitar">
             

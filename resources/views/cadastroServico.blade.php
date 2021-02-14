@@ -11,7 +11,7 @@
     <body class="antialiased">
         <h1> Cadastrar Serviço</h1>
 
-        <a href="/">Página Inicial</a>
+        <a href="/index">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/servico">
             
@@ -43,9 +43,9 @@
                     
                     @foreach($guarnicoes as $g)
                         @if('guarnicao_id' == $g->id)
-                            <option value="{{$g->id}}" selected="selected">{{$g->prefixo}}</option>
+                            <option value="{{$g->id}}" selected="selected">{{$g->prefixo}} - {{$g->descricao}}</option>
                         @else
-                            <option value="{{$g->id}}">{{$g->prefixo}}</option>
+                            <option value="{{$g->id}}">{{$g->prefixo}} - {{$g->descricao}}</option>
                         @endif
                     @endforeach
                 </select>
@@ -81,7 +81,21 @@
                 Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" value="{{old('observacao')}}" class="form-control @error('observacao')
                 is-invalid @enderror"></textarea> <br>
              </div>
-         
+             <hr>
+             <h3>Lista de Militares</h3>
+
+             <ul>
+                @foreach (Session::get('registro') as $r => $item )
+                    @if ($item != null)
+                        <li>{{ $item['postoGraduacao']}}  {{ $item['matricula']}}  {{ $item['nomeGuerra']}}
+                        Viatura {{$item['patrimonio']}}</li>
+                    @endif
+                @endforeach
+             </ul>
+             <br>
+            <a href="/cadastro/servico/registro">Adicionar Registro</a>
+             <br>
+             <br>
             <input type="submit" value="Salvar">
         </form>
     </body>

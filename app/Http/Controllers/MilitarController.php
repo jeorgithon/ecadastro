@@ -24,15 +24,15 @@ class MilitarController extends Controller
         new \App\Models\Contato(['contato' => $r->celular]),
         new \App\Models\Contato(['contato' => $r->fixo])
       ]);
-
-      //cadastro do user
+      
       $user = new \App\Models\User();
-      $user->name = $r->nomeGuerra;
+      $user->name = $r->nomeCompleto;
       $user->email = $r->email;
       $user->password = Hash::make($r->matricula);
-      $user->permissao = $r->permissao;
+      //$user->militar()->associate($militar);
       $user->save();
-
+      $militar->user_id = $user->id;
+      $militar->save();
       return redirect('listar/militar');
     } catch (\App\Validator\ValidatorException $th) {
 
@@ -52,6 +52,8 @@ class MilitarController extends Controller
   public function remover($id)
   {
     $this->authorize('delete', \App\Models\Militar::class);
+
+    // sofdelete
     Militar::destroy($id);
     return redirect('listar/militar');
   }

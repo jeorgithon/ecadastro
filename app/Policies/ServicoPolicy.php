@@ -21,18 +21,18 @@ class ServicoPolicy
     }
 
     public function create(){
-        return Auth::user()->permissao == 'admin' || Auth::user()->permissao == 'user';
+        return Auth::user()->militar->permissao == 'admin' || Auth::user()->militar->permissao == 'user';
     }
 
     public function update(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 
     public function delete(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 
     public function view(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 }

@@ -66,6 +66,8 @@ Route::post('/editar/cidade', [CidadeController::class, 'editar']);
 
 //rotas referente a entiade serviço
 Route::get('/cadastro/servico', [ServicoController::class, 'adicionar']);
+Route::get('/cadastro/servico/registro', [ServicoController::class, 'buscarRegistro']);
+Route::post('/cadastro/servico/registro', [ServicoController::class, 'adicionarRegistro']);
 Route::post('/cadastro/servico', [ServicoController::class, 'salvar']);
 Route::get('/listar/servico', [ServicoController::class, 'listar']);
 Route::get('/remover/servico/{id}', [ServicoController::class, 'remover']);

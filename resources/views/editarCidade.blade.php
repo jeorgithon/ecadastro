@@ -6,7 +6,7 @@
 
         <title>Cadastro de Cidade</title>
 
-        <a href="/">Página Inicial</a>
+        <a href="/index">Página Inicial</a>
 
         
     </head>

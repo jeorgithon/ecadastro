@@ -21,18 +21,18 @@ class ViaturaPolicy
     }
 
     public function create(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 
     public function update(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 
     public function delete(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 
     public function view(){
-        return Auth::user()->permissao == 'admin';
+        return Auth::user()->militar->permissao == 'admin';
     }
 }

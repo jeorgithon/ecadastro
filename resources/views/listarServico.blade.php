@@ -13,7 +13,7 @@
     <body class="antialiased">
         <h1> Lista de Serviços</h1>
 
-        <a href="/">Página Inicial</a>
+        <a href="/index">Página Inicial</a>
        
         <ul>
             @foreach ($lista as $item)
