@@ -3,22 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Cidade</title>
-
-        
+        <title>Cadastro de Cidade | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
         <h1> Cadastrar Cidade</h1>
-
-        <a href="/">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/cidade">
             
             @csrf<!--previne contra ataques, o laravel exige a tag-->
             <div>
             Nome: <input type="text" name="nome" value="{{old('nome')}}" class="form-control @error('nome')
-            is-invalid @enderror"/> <br>
+            is-invalid @enderror"/>
             @error('nome')
             <span>
                 <strong>{{$message}}</strong>    
@@ -26,7 +23,8 @@
             @enderror
         </div>
          <div>
-            Companhia: <input type="text" name="companhia" value="{{old('companhia')}}"/> <br>
+            Companhia: <input type="text" name="companhia" value="{{old('companhia')}}" class="form-control @error('companhia')
+            is-invalid @enderror"/>
             @error('companhia')
             <span>
                 <strong>{{$message}}</strong>    
@@ -38,4 +36,5 @@
             <input type="submit" value="Salvar">
         </form>
     </body>
+    @endsection
 </html>

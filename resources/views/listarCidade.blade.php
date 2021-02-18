@@ -3,24 +3,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Cidade</title>
-
-        
-
-        
+        <title>Cidades | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
-        <h1> Lista de Cidade</h1>
-
-        <a href="/">Página Inicial</a>
+        <h1> Cidade</h1>
        
         <ul>
             @foreach ($lista as $item)
-            <li><a href="/editar/cidade/{{$item->id}}"> {{$item->nome}}  {{$item->companhia}}</a>  <a href="/remover/cidade/{{$item->id}}"> X </a> </li>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" value="{{$item->nome}}  {{$item->companhia}}" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/editar/cidade/{{$item->id}}'">Editar</button>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/remover/cidade/{{$item->id}}'">Excluir</button>
+                </div>
+            </div>
             @endforeach
         </ul>
-        
-        <a href="/cadastro/cidade"> Cadastrar </a>
+
+        <button  onclick="document.location='/cadastro/cidade'"> Cadastrar </button>
     </body>
+    @endsection
 </html>

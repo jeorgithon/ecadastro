@@ -3,15 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Viatura</title>
-
-        
+        <title>Editar Guarnição | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
-        <h1> Cadastrar Viatura</h1>
-
-        <a href="/">Página Inicial</a>
+        <h1> Editar Guarnição</h1>
        
         <form method= "POST" action="/editar/guarnicao">
             
@@ -20,7 +17,7 @@
             <input type="hidden" name="id" value="{{$guarnicao->id}}" /> <br>
             <div>
             Prefixo: <input type="text" name="prefixo" value="{{$guarnicao->prefixo}}" class="form-control @error('prefixo')
-            is-invalid @enderror"/> <br>
+            is-invalid @enderror"/>
             @error('prefixo')
             <span>
                 <strong>{{$message}}</strong>    
@@ -28,7 +25,8 @@
             @enderror
         </div>
          <div>
-            Descrição: <input type="text" name="descricao" value="{{$guarnicao->descricao}}"/> <br>
+            Descrição: <input type="text" name="descricao" value="{{$guarnicao->descricao}}" class="form-control @error('prefixo')
+            is-invalid @enderror"/>
             @error('descricao')
             <span>
                 <strong>{{$message}}</strong>    
@@ -40,4 +38,5 @@
             <input type="submit" value="Salvar">
         </form>
     </body>
+    @endsection
 </html>

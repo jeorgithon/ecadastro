@@ -3,16 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Serviço</title>
-
-    
-        
+        <title>Editar Serviço | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
         <h1> Editar Serviço</h1>
-
-        <a href="/">Página Inicial</a>
        
         <form method= "POST" action="/editar/servico">
             
@@ -76,4 +72,5 @@
             <input type="submit" value="Salvar">
         </form>
     </body>
+    @endsection
 </html>

@@ -3,15 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Viatura</title>
-
-        
+        <title>Editar Viatura | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
-        <h1> Cadastrar Viatura</h1>
-
-        <a href="/">Página Inicial</a>
+        <h1> Editar Viatura</h1>
        
         <form method= "POST" action="/editar/viatura">
             
@@ -20,7 +17,7 @@
             <input type="hidden" name="id" value="{{$viatura->id}}" /> <br>
             <div>
             Patrimônio: <input type="text" name="patrimonio" value="{{$viatura->patrimonio}}" class="form-control @error('patrimonio')
-            is-invalid @enderror"/> <br>
+            is-invalid @enderror"/>
             @error('patrimonio')
             <span>
                 <strong>{{$message}}</strong>    
@@ -28,7 +25,8 @@
             @enderror
         </div>
          <div>
-            Tipo: <input type="text" name="tipo" value="{{$viatura->tipo}}"/> <br>
+            Tipo: <input type="text" name="tipo" value="{{$viatura->tipo}}" class="form-control @error('tipo')
+            is-invalid @enderror"/>
             @error('nomeGuerra')
             <span>
                 <strong>{{$message}}</strong>    
@@ -36,7 +34,8 @@
             @enderror
         </div>
         <div>
-            Marca: <input type="text" name="marca" value="{{$viatura->marca}}"/> <br>
+            Marca: <input type="text" name="marca" value="{{$viatura->marca}}" class="form-control @error('marca')
+            is-invalid @enderror"/>
             @error('matricula')
             <span>
                 <strong>{{$message}}</strong>    
@@ -44,7 +43,8 @@
             @enderror
         </div>
         <div>
-            Modelo: <input type="text" name="modelo" value="{{$viatura->modelo}}"/> <br>
+            Modelo: <input type="text" name="modelo" value="{{$viatura->modelo}}" class="form-control @error('modelo')
+            is-invalid @enderror"/>
             @error('modelo')
             <span>
                 <strong>{{$message}}</strong>    
@@ -52,7 +52,8 @@
             @enderror
         </div>
         <div>
-            Placa: <input type="text" name="placa" value="{{$viatura->placa}}"/> <br>
+            Placa: <input type="text" name="placa" value="{{$viatura->placa}}" class="form-control @error('placa')
+            is-invalid @enderror"/>
             @error('placa')
             <span>
                 <strong>{{$message}}</strong>    
@@ -60,7 +61,8 @@
             @enderror
         </div>  
         <div>
-            KM: <input type="text" name="km" value="{{$viatura->km}}"/> <br>
+            KM: <input type="text" name="km" value="{{$viatura->km}}" class="form-control @error('km    ')
+            is-invalid @enderror"/>
             @error('km')
             <span>
                 <strong>{{$message}}</strong>    
@@ -73,4 +75,5 @@
             <input type="submit" value="Salvar">
         </form>
     </body>
+    @endsection
 </html>

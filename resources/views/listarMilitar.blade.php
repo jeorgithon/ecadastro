@@ -3,24 +3,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Militar</title>
-
-        
-
-        
+        <title>Militares | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
-        <h1> Lista Militar</h1>
-
-        <a href="/">Página Inicial</a>
+        <h1>Militares</h1>
        
         <ul>
             @foreach ($lista as $item)
-            <li><a href="/editarMilitar/{{$item->id}}"> {{$item->postoGraduacao}}  {{$item->matricula}}  {{$item->nomeGuerra}}</a>  <a href="/removerMilitar/{{$item->id}}"> X </a> </li>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" value="{{$item->postoGraduacao}}  {{$item->matricula}}  {{$item->nomeGuerra}}" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/editarMilitar/{{$item->id}}'">Editar</button>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/removerMilitar/{{$item->id}}'">Excluir</button>
+                </div>
+            </div>
             @endforeach
         </ul>
         
-        <a href="/cadastroMilitar"> Cadastrar </a>
+        <button  onclick="document.location='/cadastroMilitar'"> Cadastrar </button>
     </body>
+    @endsection
 </html>

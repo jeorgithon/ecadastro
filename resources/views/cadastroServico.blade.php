@@ -3,42 +3,39 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro de Serviço</title>
-
-        
+        <title>Cadastro de Serviço | Ecadastro</title>
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
         <h1> Cadastrar Serviço</h1>
-
-        <a href="/">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/servico">
             
             @csrf<!--previne contra ataques, o laravel exige a tag-->
             <div>
-            Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{old('dataHoraInicial')}}" class="form-control @error('dataHoraInicial')
-            is-invalid @enderror"/> <br>
-            @error('dataHoraInicial')
-                <span>
-                    <strong>{{$message}}</strong>    
-                </span>    
-            @enderror
-             </div>
-             <br>
+                Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{old('dataHoraInicial')}}" class="form-control @error('dataHoraInicial')
+                is-invalid @enderror"/>
+                @error('dataHoraInicial')
+                    <span>
+                        <strong>{{$message}}</strong>    
+                    </span>    
+                @enderror
+            </div>
+
             <div>
-            Data de termino: <input type="datetime-local" name="dataHoraFinal" value="{{old('dataHoraFinal')}}" class="form-control @error('dataHoraFinal')
-            is-invalid @enderror"/> <br>
-            @error('dataHoraFinal')
-                <span>
-                    <strong>{{$message}}</strong>    
-                </span>    
-            @enderror
-             </div>
-             <br>
+                Data de termino: <input type="datetime-local" name="dataHoraFinal" value="{{old('dataHoraFinal')}}" class="form-control @error('dataHoraFinal')
+                is-invalid @enderror"/>
+                @error('dataHoraFinal')
+                    <span>
+                        <strong>{{$message}}</strong>    
+                    </span>    
+                @enderror
+            </div>
+            <br>
             
             <div>
-               Guarnição <select name="guarnicao_id" autofocus >
+               Guarnição: <select name="guarnicao_id" autofocus >
                     <option>Escolha uma Guarnição</option>
                     
                     @foreach($guarnicoes as $g)
@@ -58,7 +55,7 @@
             </div>
             <br>
             <div>
-                Cidade <select name="cidade_id" autofocus >
+                Cidade: <select name="cidade_id" autofocus >
                      <option>Escolha uma Cidade</option>
                      
                      @foreach($cidades as $c)
@@ -75,9 +72,9 @@
                     <strong>{{$message}}</strong>    
                 </span>    
                 @enderror
-             </div>
-             <br>
-             <div>
+            </div>
+            <br>
+            <div>
                 Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" value="{{old('observacao')}}" class="form-control @error('observacao')
                 is-invalid @enderror"></textarea> <br>
              </div>
@@ -85,4 +82,5 @@
             <input type="submit" value="Salvar">
         </form>
     </body>
+    @endsection
 </html>

@@ -3,6 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
 
         <title>Página inicial</title>
 
@@ -20,17 +24,95 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <a href="/cadastroMilitar"> Cadastro de Militar </a> <br>
-        <a href="/listar/militar"> Listar Militares </a> <br>
-        <a href="/cadastro/viatura"> Cadastro de viatura </a> <br>
-        <a href="/listar/viatura"> Listar viaturas </a> <br>
-        <a href="/cadastro/guarnicao"> Cadastro de guarnição </a> <br>
-        <a href="/listar/guarnicao"> Listar guarnições </a> <br>
-        <a href="/cadastro/cidade"> Cadastro de cidade </a> <br>
-        <a href="/listar/cidade"> Listar cidades </a> <br>
-        <a href="/cadastro/servico"> Cadastro de Serviço </a> <br>
-        <a href="/listar/servico"> Listar Serviço </a> <br>
-        <h3>Teste Git</h3>
+    <body>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
+        <div id="app2">       
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark shaddow-sm">
+                <div class="container">
+                    <a class="navbar-brand" href="/index">E-cadastro</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Configurações</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="container" style="padding-top: 10px">
+                <div class = "row justify-content-center">
+                    <div class="col-md-2">
+                        <div class = "list-group">
+                            <div class="btn-group">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
+                                Militar
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastroMilitar'">Cadastro de Militar</button>
+                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/militar'">Listar Militares</button>
+                                </div>
+                            </div>
+                            <div class="btn-group" style="padding-top: 3px">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
+                                Viaturas
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/viatura'">Cadastro de Viaturas</button>
+                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/viatura'">Listar Viaturas</button>
+                                </div>
+                            </div>
+                            <div class="btn-group" style="padding-top: 3px">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
+                                Guarnição
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/guarnicao'">Cadastro de Guarnição</button>
+                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/guarnicao'">Listar Guarnições</button>
+                                </div>
+                            </div>
+                            <div class="btn-group" style="padding-top: 3px">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
+                                Cidade
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/cidade'">Cadastro de Cidade</button>
+                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/cidade'">Listar Cidades</button>
+                                </div>
+                            </div>
+                            <div class="btn-group" style="padding-top: 3px">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
+                                Serviços
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/servico'">Cadastro de Serviços</button>
+                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/servico'">Listar Serviços</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <div class="col-md-10">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </body>
 </html>
