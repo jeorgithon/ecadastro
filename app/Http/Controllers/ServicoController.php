@@ -21,11 +21,12 @@ class ServicoController extends Controller
     }
     public function adicionarRegistro(Request $r)
     {
+        
         try {
-            \App\Validator\RegistroValidator::validate($r->all());
+            \App\Validator\RegistroValidator::validate($r->all(), $r);
             if ($r->session()->has('registro')) {
                 $listRegistro = $r->session()->get('registro');
-                //dd($listRegistro);
+                ;
             } else {
                 $listRegistro = array();
             }
@@ -75,20 +76,23 @@ class ServicoController extends Controller
     public function adicionar(Request $request)
     {
         if (!$request->session()->has('registro')) {
-            $carrinho = array();
-            $request->session()->put('registro', $carrinho);
+            $listRegistro = array();
+            $request->session()->put('registro', $listRegistro);
         }
         $listcidade = Cidade::all();
         $listguarnicao = Guarnicao::all();
-        $listaMilitar = array();
-        return view('cadastroServico', ['cidades' => $listcidade, 'guarnicoes' => $listguarnicao, 'lista' => $listaMilitar]);
+        date_default_timezone_set('America/Sao_Paulo');
+        $dataminima = date('Y-m-d\TH:i');
+        $datamaxima = date('Y-m-d\T23:59');
+       //dd($datamaxima);
+        return view('cadastroServico', ['cidades' => $listcidade, 'guarnicoes' => $listguarnicao,
+         'min' => $dataminima, 'max'=>$datamaxima]);
     }
 
     public function salvar(Request $r)
     {
-        //dd($r->session()->get('registro'));
         try {
-            \App\Validator\ServicoValidator::validate($r->all());
+            \App\Validator\ServicoValidator::validate($r->all(), $r);
             $listRegistro = $r->session()->get('registro');
             $registros = array();
             foreach ($listRegistro as $k => $reg) {
@@ -99,12 +103,18 @@ class ServicoController extends Controller
                     'comandante' => $reg['comandante'],
                     'motorista' => $reg['motorista']
                 ]);
+                //atualizando o km da viatura
+                $viatura = Viatura::find($reg['viatura_id']);
+                $viatura->km = $reg['km'];
+                $viatura->update();
             }
-            //dd($registros);
+            
             $servico = Servico::create($r->all());
             $servico->registros()->saveMany($registros);
             $listRegistro = array();
             $r->session()->put('registro', $listRegistro);
+
+            
             return redirect('listar/servico');
         } catch (\App\Validator\ValidatorException $th) {
             $listGuarnicao = Guarnicao::all();
@@ -128,6 +138,17 @@ class ServicoController extends Controller
         return redirect('listar/servico');
     }
 
+    public function removerRegistro($id, Request $r)
+    {
+        
+        $listRegistro = $r->session()->get('registro');
+        unset($listRegistro[$id]);
+        $r->session()->put('registro', $listRegistro);
+        return redirect('cadastro/servico');
+    }
+
+    
+
     public function getEditar($id)
     {
         $listCidade = Cidade::all();
@@ -139,7 +160,7 @@ class ServicoController extends Controller
 
         $datefinal = new DateTime($servico->dataHoraFinal);
         $datefinal =  $datefinal->format('Y-m-d\TH:i');
-        //    dd($servico->dataHoraFinal);
+        //dd($servico->dataHoraFinal);
 
         return view('editarServico', [
             'servico' => $servico, 'cidades' => $listCidade,

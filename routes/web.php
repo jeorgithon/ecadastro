@@ -71,6 +71,7 @@ Route::post('/cadastro/servico/registro', [ServicoController::class, 'adicionarR
 Route::post('/cadastro/servico', [ServicoController::class, 'salvar']);
 Route::get('/listar/servico', [ServicoController::class, 'listar']);
 Route::get('/remover/servico/{id}', [ServicoController::class, 'remover']);
+Route::get('/remover/registro/{id}', [ServicoController::class, 'removerRegistro']);
 Route::get('/editar/servico/{id}', [ServicoController::class, 'getEditar']);
 Route::post('/editar/servico', [ServicoController::class, 'editar']);
 
