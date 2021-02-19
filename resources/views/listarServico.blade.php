@@ -13,14 +13,21 @@
         <ul>
             @foreach ($lista as $item)
             <div class="input-group mb-3">
-                <input type="text" class="form-control" value="{{$item->guarnicao->prefixo}}  {{$item->cidade->nome}}" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                <input type="text" class="form-control" value="{{$item->guarnicao->prefixo}}  {{$item->cidade->nome}}" 
+                aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/editar/servico/{{$item->id}}'">Editar</button>
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/remover/servico/{{$item->id}}'">Excluir</button>
+                   
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                     onclick="document.location='/editar/servico/{{$item->id}}'">Editar</button>
+                   
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                     onclick="document.location='/remover/servico/{{$item->id}}'">Excluir</button>
                 </div>
             </div>
             @endforeach
         </ul>
+
+        
     
         <button  onclick="document.location='/cadastro/servico'"> Cadastrar </button>
     </body>

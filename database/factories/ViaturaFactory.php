@@ -21,14 +21,14 @@ class ViaturaFactory extends Factory
      */
     public function definition()
     {
-        $vetorMarca = ['Fiat', 'Ford', 'Toyota', 'Volkswagen', 'Chevrolet'];
-        $vetorModelo = ['Toro', 'Range', 'Hilux', 'SpaceFox', 'Spin'];
-        $vetorTipo = ['caminhonete', 'caminhonete', 'caminhonet', 'pirua', 'pirua'];
+        $vetorMarca = ['Fiat', 'Ford', 'Toyota', 'Volkswagen', 'Chevrolet', 'Honda'];
+        $vetorModelo = ['Toro', 'Range', 'Hilux', 'SpaceFox', 'Spin', 'XRE300'];
+        $vetorTipo = ['carro', 'carro', 'carro', 'carro', 'carro', 'moto'];
         $km = random_int(50000, 100000);
         $patrimonio = random_int(500, 600);
         $placa = random_int(1000,9000);
         
-        $cont = random_int(0,4);
+        $cont = random_int(0,5);
         $tipo = $vetorTipo[$cont];;
         $marca = $vetorMarca[$cont];
         $modelo =$vetorModelo[$cont];

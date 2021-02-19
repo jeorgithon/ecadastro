@@ -28,4 +28,8 @@ class Militar extends Model
 	public function registros() {
 		return $this->hasMany('\App\Models\Registro');
 	}
+
+	public function user() {
+		return $this->belongsTo('\App\Models\User');
+	}
 }

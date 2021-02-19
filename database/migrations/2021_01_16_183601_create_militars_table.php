@@ -23,6 +23,9 @@ class CreateMilitarsTable extends Migration
             $table->string('ome')->nullable();
             $table->string('permissao');
             $table->string('email');
+
+            $table->bigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

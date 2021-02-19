@@ -20,7 +20,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'permissao',
     ];
 
     /**
@@ -42,5 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function militar() {
+        return $this->hasOne('\App\Models\Militar');
+}
     
 }

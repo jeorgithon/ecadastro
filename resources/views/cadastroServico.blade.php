@@ -13,8 +13,10 @@
         <form method= "POST" action="/cadastro/servico">
             
             @csrf<!--previne contra ataques, o laravel exige a tag-->
+        
             <div>
-                Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{old('dataHoraInicial')}}" class="form-control @error('dataHoraInicial')
+                Data de início: <input type="datetime-local" min="{{$min}}"  max="{{$max}}" name="dataHoraInicial" 
+                value="{{old('dataHoraInicial')}}" class="form-control @error('dataHoraInicial')
                 is-invalid @enderror"/>
                 @error('dataHoraInicial')
                     <span>
@@ -24,7 +26,8 @@
             </div>
 
             <div>
-                Data de termino: <input type="datetime-local" name="dataHoraFinal" value="{{old('dataHoraFinal')}}" class="form-control @error('dataHoraFinal')
+                Data de termino: <input type="datetime-local" name="dataHoraFinal" value="{{old('dataHoraFinal')}}" 
+                class="form-control @error('dataHoraFinal')
                 is-invalid @enderror"/>
                 @error('dataHoraFinal')
                     <span>
@@ -40,9 +43,9 @@
                     
                     @foreach($guarnicoes as $g)
                         @if('guarnicao_id' == $g->id)
-                            <option value="{{$g->id}}" selected="selected">{{$g->prefixo}}</option>
+                            <option value="{{$g->id}}" selected="selected">{{$g->prefixo}} - {{$g->descricao}}</option>
                         @else
-                            <option value="{{$g->id}}">{{$g->prefixo}}</option>
+                            <option value="{{$g->id}}">{{$g->prefixo}} - {{$g->descricao}}</option>
                         @endif
                     @endforeach
                 </select>
@@ -75,10 +78,25 @@
             </div>
             <br>
             <div>
-                Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" value="{{old('observacao')}}" class="form-control @error('observacao')
-                is-invalid @enderror"></textarea> <br>
+                Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" class="form-control @error('observacao')
+                is-invalid @enderror">{{old('observacao')}}</textarea> <br>
              </div>
-         
+             <hr>
+             <h3>Lista de Militares</h3>
+
+             <ul>
+                @foreach (Session::get('registro') as $r => $item )
+               
+                    @if ($item != null)
+                        <li>{{ $item['postoGraduacao']}}  {{ $item['matricula']}}  {{ $item['nomeGuerra']}}
+                        Viatura {{$item['patrimonio']}} <a href="/remover/registro/{{$r}}">Remover</a></li>
+                    @endif
+                @endforeach
+             </ul>
+             <br>
+            <a href="/cadastro/servico/registro">Adicionar Registro</a>
+             <br>
+             <br>
             <input type="submit" value="Salvar">
         </form>
     </body>

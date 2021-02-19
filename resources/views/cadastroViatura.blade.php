@@ -59,7 +59,7 @@
             @enderror
         </div>  
         <div>
-            KM: <input type="text" name="km" value="{{old('km')}}" class="form-control @error('km')
+            KM: <input type="number" name="km" value="{{old('km')}}" class="form-control @error('km')
             is-invalid @enderror"/>
             @error('km')
             <span>
@@ -69,7 +69,6 @@
         </div>
             
             <br>
-         
             <input type="submit" value="Salvar">
         </form>
     </body>

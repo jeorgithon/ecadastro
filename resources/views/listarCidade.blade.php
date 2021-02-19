@@ -8,13 +8,12 @@
     @extends('index')
     @section('content')
     <body class="antialiased">
-        <h1> Cidade</h1>
-       
-        <ul>
+    <ul>
             @foreach ($lista as $item)
             <div class="input-group mb-3">
-                <input type="text" class="form-control" value="{{$item->nome}}  {{$item->companhia}}" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                <input type="text" class="form-control" value="{{$item->nome}}" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                 <div class="input-group-append">
+       
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/editar/cidade/{{$item->id}}'">Editar</button>
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="document.location='/remover/cidade/{{$item->id}}'">Excluir</button>
                 </div>

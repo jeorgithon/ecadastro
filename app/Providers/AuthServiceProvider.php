@@ -26,5 +26,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::resource('militars', 'MilitarPolicy');
+        Gate::resource('cidades', 'CidadePolicy');
+        Gate::resource('guarnicaos', 'GuarnicaoPolicy');
+        Gate::resource('servicos', 'ServicoPolicy');
+        Gate::resource('viaturas', 'ViaturaPolicy');
     }
 }

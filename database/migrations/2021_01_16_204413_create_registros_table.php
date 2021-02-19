@@ -17,8 +17,8 @@ class CreateRegistrosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('km');
-            $table->boolean('comandante');
-            $table->boolean('motorista');
+            $table->boolean('comandante')->default(false);
+            $table->boolean('motorista')->default(false);
             
             $table->bigInteger('militar_id');
             $table->foreign('militar_id')->references('id')->on('militars')->onDelete('cascade');

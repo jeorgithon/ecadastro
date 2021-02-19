@@ -64,10 +64,26 @@
                  </div>
                  <br>
                  <div>
-                    Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao" aria-valuetext="{{$servico->observacao}}"  class="form-control @error('observacao')
-                    is-invalid @enderror"></textarea> <br>
+                    Observações: <textarea cols="40" rows="5" maxlength="200" name="observacao"  class="form-control @error('observacao')
+                    is-invalid @enderror">{{$servico->observacao}}</textarea> <br>
                  </div>
                  <br>
+                 <hr>
+             <h3>Lista de Militares</h3>
+
+             <ul>
+                @foreach (Session::get('registro') as $r => $item )
+                
+                    @if ($item != null)
+                        <li>{{ $item['postoGraduacao']}}  {{ $item['matricula']}}  {{ $item['nomeGuerra']}}
+                        Viatura {{$item['patrimonio']}} <a href="/remover/registro/{{$r}}">Remover</a></li>
+                    @endif
+                @endforeach
+             </ul>
+             <br>
+            <a href="/cadastro/servico/registro">Adicionar Registro</a>
+             <br>
+             <br>
          
             <input type="submit" value="Salvar">
         </form>
