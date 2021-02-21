@@ -59,8 +59,18 @@
                 @enderror
             </div>  
             <div>
-                Permissão: <input type="text" name="permissao" value="{{old('permissao')}}" class="form-control @error('permissao')
-                is-invalid @enderror"/>
+                <div>
+                Permissão:
+                    <label for="exampleFormControlSelect1"></label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="permissao" value="{{old('permissao')}}"
+                    class="form-control @error('permissao') is-invalid @enderror">
+                    <option>user</option>
+                    <option>admin</option>
+                    </select>
+                </div>
+                <!--Permissão:
+                <input type="text" name="permissao" value="{{old('permissao')}}" class="form-control @error('permissao')
+                is-invalid @enderror"/>-->
                 @error('permissao')
                 <span>
                     <strong>{{$message}}</strong>    

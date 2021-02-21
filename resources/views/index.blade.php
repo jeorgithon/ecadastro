@@ -22,6 +22,7 @@
             body {
                 font-family: 'Nunito';
             }
+
             /* Fixed sidenav, full height */
             .sidenav {
             height: 100%;
