@@ -16,8 +16,9 @@
             
             <input type="hidden" name="id" value="{{$servico->id}}" /> <br>
             <div>
-                Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{$inicio}}" class="form-control @error('dataInicial')
-                is-invalid @enderror"/> <br>
+                Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{$inicio}}" 
+                class="form-control @error('dataInicial')
+                is-invalid @enderror" min="{{$min}}"  max="{{$max}}"/> <br>
                 @error('dataInicial')
                     <span>
                         <strong>{{$message}}</strong>    

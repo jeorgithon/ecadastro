@@ -83,7 +83,7 @@
              </div>
              <hr>
              <h3>Lista de Militares</h3>
-
+            <div>
              <ul>
                 @foreach (Session::get('registro') as $r => $item )
                
@@ -92,7 +92,13 @@
                         Viatura {{$item['patrimonio']}} <a href="/remover/registro/{{$r}}">Remover</a></li>
                     @endif
                 @endforeach
+                @error('militar_id')
+                    <span>
+                        <strong>{{$message}}</strong>    
+                    </span>    
+                 @enderror
              </ul>
+             </div>
              <br>
             <a href="/cadastro/servico/registro">Adicionar Registro</a>
              <br>

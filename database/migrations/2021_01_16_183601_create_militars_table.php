@@ -18,11 +18,11 @@ class CreateMilitarsTable extends Migration
             $table->timestamps();
             $table->string('nomeCompleto');
             $table->string('nomeGuerra');
-            $table->string('matricula');
+            $table->string('matricula')->unique();
             $table->string('postoGraduacao');
             $table->string('ome')->nullable();
             $table->string('permissao');
-            $table->string('email');
+            $table->string('email')->unique();
 
             $table->bigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
