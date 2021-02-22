@@ -10,6 +10,7 @@ use App\Models\Viatura;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class ServicoController extends Controller
 {
@@ -27,7 +28,7 @@ class ServicoController extends Controller
             \App\Validator\RegistroValidator::validate($r->all(), $r);
             if ($r->session()->has('registro')) {
                 $listRegistro = $r->session()->get('registro');
-                ;
+                //;
             } else {
                 $listRegistro = array();
             }
@@ -135,7 +136,13 @@ class ServicoController extends Controller
     {
         $this->authorize('view', \App\Models\Servico::class);
         $listaServico  = Servico::all();
+        // $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
+        // ->join('servicos', 'servicos.id','=', 'registros.servico_id')
+        // -> where('servicos.dataHoraFinal', '<', $data['dataHoraInicial'])
+        // ->first();
+        $listServico = DB::table('servicos')->get();
 
+        //dd($listaServico);
         return view('listarServico', ['lista' => $listaServico]);
     }
 
@@ -210,24 +217,24 @@ class ServicoController extends Controller
         $this->authorize('update', \App\Models\Servico::class);   
         try {
             \App\Validator\ServicoValidator::validate($r->all(), $r);
-        $servico =  Servico::find($r->id);
-        $servico->dataHoraInicial = $r->dataHoraInicial;
-        $servico->dataHoraFinal = $r->dataHoraFinal;
-        $servico->guarnicao_id = $r->guarnicao_id;
-        $servico->cidade_id = $r->cidade_id;
-        $servico->observacao = $r->observacao;
-        $servico->update();
+            $servico =  Servico::find($r->id);
+            $servico->dataHoraInicial = $r->dataHoraInicial;
+            $servico->dataHoraFinal = $r->dataHoraFinal;
+            $servico->guarnicao_id = $r->guarnicao_id;
+            $servico->cidade_id = $r->cidade_id;
+            $servico->observacao = $r->observacao;
+            $servico->update();
 
-        //limpa a sesão
-        $listRegistro = array();
-        $r->session()->put('registro', $listRegistro);
-        return redirect('listar/servico');
-    } catch (\App\Validator\ValidatorException $th) {
-        $listGuarnicao = Guarnicao::all();
-        $listCidade = Cidade::all();
-        return redirect('cadastro/servico')->with(['guarnicoes' => $listGuarnicao, 'cidades' => $listCidade])
-            ->withErrors($th->getValidator())->withInput();
-    } 
-        
-    }
+            //limpa a sesão
+            $listRegistro = array();
+            $r->session()->put('registro', $listRegistro);
+            return redirect('listar/servico');
+        } catch (\App\Validator\ValidatorException $th) {
+            $listGuarnicao = Guarnicao::all();
+            $listCidade = Cidade::all();
+            return redirect('/cadastro/servico')->with(['guarnicoes' => $listGuarnicao, 'cidades' => $listCidade])
+                ->withErrors($th->getValidator())->withInput();
+        } 
+            
+        }
 }

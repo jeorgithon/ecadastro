@@ -78,17 +78,32 @@ class ServicoValidator extends \Exception
         //A variável $data tem os dados do serviço a ser cadastrado
         // A variável $listRegistro tem uma lista dos registros a serem cadastrados
         if($data['dataHoraInicial'] != null){
-            foreach($listRegistro as $reg){
-
-                $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
-                ->join('servicos', 'servicos.id','=', 'registros.servico_id')
-                -> where('servicos.dataHoraFinal', '<', $data['dataHoraInicial'])
-                ->first();
-
-               if(!is_null($registros)){
-                    $validator->errors()->add('militar_id', 'O militar '.$reg[ 'nomeGuerra'].' já está ativado em outra guarnição');
-               }
-            } 
+            if($r->id == null){
+                foreach($listRegistro as $reg){
+                    $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
+                    ->join('servicos', 'servicos.id','=', 'registros.servico_id')
+                    -> where('servicos.dataHoraFinal', '>=', $data['dataHoraInicial'])
+                    ->first();
+                    
+                    if(!is_null($registros)){
+                            $validator->errors()->add('militar_id', 'O militar '.$reg[ 'nomeGuerra'].' já está ativado em outra guarnição');
+                    }
+                } 
+            }
+            else{
+                //dd('passou no else');
+                foreach($listRegistro as $reg){
+                    $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
+                    ->join('servicos', 'servicos.id','=', 'registros.servico_id')
+                    -> where('servicos.dataHoraFinal', '>=', $data['dataHoraInicial'])
+                    -> where('servicos.id', '=', $r->id)
+                    ->first();
+                    //dd($r->id);
+                    if(!is_null($registros)){
+                            $validator->errors()->add('militar_id', 'O militar '.$reg[ 'nomeGuerra'].' já está ativado em outra guarnição');
+                    }
+                } 
+            }
         }
 
         if (!$validator->errors()->isEmpty()) {
