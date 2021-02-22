@@ -70,16 +70,21 @@ class MilitarController extends Controller
 
   public function editar(Request $r)
   {
-    $this->authorize('update', \App\Models\Militar::class);
-    $militar =  Militar::find($r->id);
-    $militar->nomeCompleto = $r->nomeCompleto;
-    $militar->nomeGuerra = $r->nomeGuerra;
-    $militar->matricula = $r->matricula;
-    $militar->postoGraduacao = $r->postoGraduacao;
-    $militar->ome = $r->ome;
-    $militar->permissao = $r->permissao;
-    $militar->update();
-
-    return redirect('listar/militar');
+      $this->authorize('update', \App\Models\Militar::class);
+      try{
+        \App\Validator\MilitarValidator::validate($r->all());
+        $militar =  Militar::find($r->id);
+        $militar->nomeCompleto = $r->nomeCompleto;
+        $militar->nomeGuerra = $r->nomeGuerra;
+        $militar->matricula = $r->matricula;
+        $militar->postoGraduacao = $r->postoGraduacao;
+        $militar->ome = $r->ome;
+        $militar->permissao = $r->permissao;
+        $militar->update();
+        return redirect('listar/militar');
+    } catch (\App\Validator\ValidatorException $th) {
+      return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
+      
+    }
   }
 }
