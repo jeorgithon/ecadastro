@@ -8,6 +8,7 @@
     @extends('index')
     @section('content')
     <body class="antialiased">
+        <br><br>
         <h1> Editar Viatura</h1>
        
         <form method= "POST" action="/editar/viatura">
@@ -25,8 +26,15 @@
             @enderror
         </div>
          <div>
-            Tipo: <input type="text" name="tipo" value="{{$viatura->tipo}}" class="form-control @error('tipo')
-            is-invalid @enderror"/>
+            <div>
+                Tipo:
+                <select class="form-control" id="exampleFormControlSelect1" name="tipo" value="{{$viatura->tipo}}" 
+                class="form-control @error('tipo') is-invalid @enderror">
+                <option>{{$viatura->tipo}}</option>
+                <option>carro</option>
+                <option>moto</option>
+                </select>
+            </div>
             @error('nomeGuerra')
             <span>
                 <strong>{{$message}}</strong>    

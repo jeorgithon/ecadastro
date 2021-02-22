@@ -1,0 +1,1 @@
+var exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'), options)

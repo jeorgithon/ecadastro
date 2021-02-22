@@ -29,7 +29,7 @@ class MilitarFactory extends Factory
         $matricula = random_int(1000, 2000);
         $mat = strval($matricula);
 
-        $vetorPermissao = ['adim',  'user'];
+        $vetorPermissao = ['admin',  'user'];
         $indece = random_int(0,1);
         $permissao =$vetorPermissao[$indece];
         static $iterador = 0;

@@ -8,6 +8,7 @@
     @extends('index')
     @section('content')
     <body class="antialiased">
+        <br><br>
         <h1> Cadastrar Viatura</h1>
        
         <form method= "POST" action="/cadastro/viatura">
@@ -25,7 +26,6 @@
          <div>
             <div>
                 Tipo:
-                <label for="exampleFormControlSelect1"></label>
                 <select class="form-control" id="exampleFormControlSelect1" name="tipo" value="{{old('tipo')}}" 
                 class="form-control @error('tipo') is-invalid @enderror">
                 <option>carro</option>
