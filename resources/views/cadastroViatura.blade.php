@@ -23,8 +23,18 @@
             @enderror
         </div>
          <div>
+            <div>
+                Tipo:
+                <label for="exampleFormControlSelect1"></label>
+                <select class="form-control" id="exampleFormControlSelect1" name="tipo" value="{{old('tipo')}}" 
+                class="form-control @error('tipo') is-invalid @enderror">
+                <option>carro</option>
+                <option>moto</option>
+                </select>
+            </div>
+            <!--
             Tipo: <input type="text" name="tipo" value="{{old('tipo')}}" class="form-control @error('tipo')
-            is-invalid @enderror"/>
+            is-invalid @enderror"/>-->
             @error('tipo')
             <span>
                 <strong>{{$message}}</strong>    
