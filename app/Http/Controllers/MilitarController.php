@@ -38,7 +38,7 @@ class MilitarController extends Controller
 
       return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
     }  catch (\Illuminate\Database\QueryException $th) {
-      //aqui pode ter um alert.
+      //Está aqui por redundância, mas já está sendo tratada na validação.
       echo "Email ou matricula já existe no sistema.";
     }
   }
@@ -83,8 +83,13 @@ class MilitarController extends Controller
         $militar->update();
         return redirect('listar/militar');
     } catch (\App\Validator\ValidatorException $th) {
-      return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
+      $militar =  Militar::find($r->id);
+      return view('editarMilitar', ['militar' => $militar])->withErrors($th->getValidator());
       
+    }
+    catch (\Illuminate\Database\QueryException $th) {
+      //Está aqui por redundância, mas já está sendo tratada na validação.
+      echo "Email ou matricula já existe no sistema.";
     }
   }
 }

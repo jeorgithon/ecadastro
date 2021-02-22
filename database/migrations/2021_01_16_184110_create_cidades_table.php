@@ -17,7 +17,7 @@ class CreateCidadesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('companhia');
-            $table->string('nome');
+            $table->string('nome')->unique();
         });
     }
 

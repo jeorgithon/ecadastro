@@ -52,6 +52,8 @@ class ViaturaController extends Controller
   public function editar(Request $r)
   {
     $this->authorize('update', \App\Models\Viatura::class);
+    try{
+    \App\Validator\ViaturaValidator::validate($r->all()); 
     $viatura =  Viatura::find($r->id);
     $viatura->patrimonio = $r->patrimonio;
     $viatura->tipo = $r->tipo;
@@ -60,7 +62,10 @@ class ViaturaController extends Controller
     $viatura->placa = $r->placa;
     $viatura->km = $r->km;
     $viatura->update();
-
     return redirect('listar/viatura');
+  } catch (\App\Validator\ValidatorException $th) {
+    $viatura =  Viatura::find($r->id);
+    return view('editarViatura', ['viatura' => $viatura])->withErrors($th->getValidator());
+  }
   }
 }

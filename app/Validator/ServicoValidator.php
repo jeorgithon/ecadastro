@@ -79,8 +79,10 @@ class ServicoValidator extends \Exception
         // A variável $listRegistro tem uma lista dos registros a serem cadastrados
         if($data['dataHoraInicial'] != null){
             if($r->id == null){
+               // dd('passou create');
                 foreach($listRegistro as $reg){
-                    $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
+                    $registros = DB::table('registros')
+                    ->where('militar_id','=',$reg['militar_id'])
                     ->join('servicos', 'servicos.id','=', 'registros.servico_id')
                     -> where('servicos.dataHoraFinal', '>=', $data['dataHoraInicial'])
                     ->first();
@@ -91,14 +93,15 @@ class ServicoValidator extends \Exception
                 } 
             }
             else{
-                //dd('passou no else');
+               // dd('passou update');
                 foreach($listRegistro as $reg){
-                    $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
+                    $registros = DB::table('registros')
+                    ->where('militar_id','=',$reg['militar_id'])
                     ->join('servicos', 'servicos.id','=', 'registros.servico_id')
                     -> where('servicos.dataHoraFinal', '>=', $data['dataHoraInicial'])
-                    -> where('servicos.id', '=', $r->id)
+                    -> where('servicos.id', '<>', $r->id)
                     ->first();
-                    //dd($r->id);
+                   // dd($registros);
                     if(!is_null($registros)){
                             $validator->errors()->add('militar_id', 'O militar '.$reg[ 'nomeGuerra'].' já está ativado em outra guarnição');
                     }

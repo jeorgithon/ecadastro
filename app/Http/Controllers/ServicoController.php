@@ -165,7 +165,7 @@ class ServicoController extends Controller
 
     
 
-    public function getEditar($id, Request $r)
+    public function getEditar($id, Request $r, $erro = null)
     {
         $this->authorize('update', \App\Models\Servico::class);
         $listCidade = Cidade::all();
@@ -206,6 +206,13 @@ class ServicoController extends Controller
         $dataminima = date('Y-m-d\T00:00');
         $datamaxima = date('Y-m-d\T23:59');
 
+        if($erro!= null){
+            //dd('pegou o erro');
+            return view('editarServico', [
+                'servico' => $servico, 'cidades' => $listCidade, 'min' => $dataminima, 'max'=>$datamaxima,
+                'guarnicoes' => $listGuarnicao, 'inicio' => $dateinicial, 'fim' => $datefinal
+            ]);
+        }
         return view('editarServico', [
             'servico' => $servico, 'cidades' => $listCidade, 'min' => $dataminima, 'max'=>$datamaxima,
             'guarnicoes' => $listGuarnicao, 'inicio' => $dateinicial, 'fim' => $datefinal
@@ -232,8 +239,18 @@ class ServicoController extends Controller
         } catch (\App\Validator\ValidatorException $th) {
             $listGuarnicao = Guarnicao::all();
             $listCidade = Cidade::all();
-            return redirect('/cadastro/servico')->with(['guarnicoes' => $listGuarnicao, 'cidades' => $listCidade])
-                ->withErrors($th->getValidator())->withInput();
+            $servico =  Servico::find($r->id);
+            $dateinicial = new DateTime($servico->dataHoraInicial);
+            $dateinicial =  $dateinicial->format('Y-m-d\TH:i');
+            $datefinal = new DateTime($servico->dataHoraFinal);
+            $datefinal =  $datefinal->format('Y-m-d\TH:i');
+            date_default_timezone_set('America/Sao_Paulo');
+            $dataminima = date('Y-m-d\T00:00');
+            $datamaxima = date('Y-m-d\T23:59');
+            return view('editarServico', [
+                'servico' => $servico, 'cidades' => $listCidade, 'min' => $dataminima, 'max'=>$datamaxima,
+                'guarnicoes' => $listGuarnicao, 'inicio' => $dateinicial, 'fim' => $datefinal
+            ])->withErrors($th->getValidator());
         } 
             
         }

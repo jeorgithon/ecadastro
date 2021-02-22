@@ -18,26 +18,28 @@
             <input type="hidden" name="id" value="{{$servico->id}}" /> <br>
             <div>
                 Data de início: <input type="datetime-local" name="dataHoraInicial" value="{{$inicio}}" 
-                class="form-control @error('dataInicial')
-                is-invalid @enderror" min="{{$min}}"  max="{{$max}}"/> <br>
-                @error('dataInicial')
+                class="form-control @error('dataHoraInicial')
+                is-invalid @enderror" min="{{$min}}"  max="{{$max}}"/> 
+                @error('dataHoraInicial')
                     <span>
                         <strong>{{$message}}</strong>    
                     </span>    
                 @enderror
-                 </div>
-                 
-                <div>
+            </div>
+              <br>   
+            <div>
                 Data de termino: <input type="datetime-local" name="dataHoraFinal" value="{{$fim}}"  class="form-control @error('dataHoraFinal')
-                is-invalid @enderror"/> <br>
+                is-invalid @enderror"/> 
                 @error('dataHoraFinal')
                     <span>
                         <strong>{{$message}}</strong>    
                     </span>    
                 @enderror
-                 </div> 
+            </div> 
+            <br>
                 <div>
-                   Guarnição <select name="guarnicao_id" autofocus>
+                   Guarnição <select name="guarnicao_id" autofocus class="form-control @error('guarnicao_id')
+                is-invalid @enderror">
                         <option>Escolha uma Guarnição</option>
                         
                         @foreach($guarnicoes as $g)
@@ -49,10 +51,16 @@
                             @endif
                         @endforeach
                     </select>
+                @error('guarnicao_id')
+                    <span>
+                        <strong>{{$message}}</strong>    
+                    </span>    
+                @enderror
                 </div>
                 <br>
                 <div>
-                    Cidade <select name="cidade_id" autofocus>
+                    Cidade <select name="cidade_id" autofocus class="form-control @error('cidade_id')
+                is-invalid @enderror">
                          <option>Escolha uma Cidade</option>
                          
                          @foreach($cidades as $c)
@@ -63,6 +71,11 @@
                              @endif
                          @endforeach
                      </select>
+                @error('cidade_id')
+                    <span>
+                        <strong>{{$message}}</strong>    
+                    </span>    
+                @enderror
                  </div>
                  <br>
                  <div>

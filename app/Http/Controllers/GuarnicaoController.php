@@ -51,11 +51,16 @@ class GuarnicaoController extends Controller
   public function editar(Request $r)
   {
     $this->authorize('update', \App\Models\Guarnicao::class);
-    $guarnicao =  Guarnicao::find($r->id);
-    $guarnicao->prefixo = $r->prefixo;
-    $guarnicao->descricao = $r->descricao;
-    $guarnicao->update();
-
-    return redirect('listar/guarnicao');
+    try {
+      \App\Validator\GuarnicaoValidator::validate($r->all());
+      $guarnicao =  Guarnicao::find($r->id);
+      $guarnicao->prefixo = $r->prefixo;
+      $guarnicao->descricao = $r->descricao;
+      $guarnicao->update();
+      return redirect('listar/guarnicao');
+    } catch (\App\Validator\ValidatorException $th) {
+      $guarnicao =  Guarnicao::find($r->id);
+      return view('editarGuarnicao', ['guarnicao' => $guarnicao])->withErrors($th->getValidator());
+    }
   }
 }

@@ -51,11 +51,16 @@ class CidadeController extends Controller
   public function editar(Request $r)
   {
     $this->authorize('update', \App\Models\Cidade::class);
-    $cidade =  Cidade::find($r->id);
-    $cidade->companhia = $r->companhia;
-    $cidade->nome = $r->nome;
-    $cidade->update();
-
-    return redirect('listar/cidade');
+    try {
+      \App\Validator\CidadeValidator::validate($r->all());
+      $cidade =  Cidade::find($r->id);
+      $cidade->companhia = $r->companhia;
+      $cidade->nome = $r->nome;
+      $cidade->update();
+      return redirect('listar/cidade');
+    } catch (\App\Validator\ValidatorException $th) {
+      $cidade =  Cidade::find($r->id);
+      return view('editarCidade', ['cidade' => $cidade])->withErrors($th->getValidator());
+    }
   }
 }

@@ -12,7 +12,7 @@
         <h1> Cadastrar Serviço</h1>
        
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRegistro">
+        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#addRegistro" data-bs-whatever="@teste">
         Registrar Militar
         </button>
 
@@ -92,7 +92,8 @@
             <br>
             
             <div>
-               Guarnição: <select name="guarnicao_id" autofocus >
+               Guarnição: <select name="guarnicao_id" autofocus class="form-control @error('guarnicao_id')
+                is-invalid @enderror">
                     <option>Escolha uma Guarnição</option>
                     
                     @foreach($guarnicoes as $g)
@@ -103,7 +104,6 @@
                         @endif
                     @endforeach
                 </select>
-                <br>
                  @error('guarnicao_id')
                 <span>
                     <strong>{{$message}}</strong>    
@@ -112,7 +112,8 @@
             </div>
             <br>
             <div>
-                Cidade: <select name="cidade_id" autofocus >
+                Cidade: <select name="cidade_id" autofocus class="form-control @error('cidade_id')
+                is-invalid @enderror">
                      <option>Escolha uma Cidade</option>
                      
                      @foreach($cidades as $c)
@@ -123,7 +124,6 @@
                          @endif
                      @endforeach
                  </select>
-                 <br>
                  @error('cidade_id')
                 <span>
                     <strong>{{$message}}</strong>    

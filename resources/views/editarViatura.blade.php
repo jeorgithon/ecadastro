@@ -44,7 +44,7 @@
         <div>
             Marca: <input type="text" name="marca" value="{{$viatura->marca}}" class="form-control @error('marca')
             is-invalid @enderror"/>
-            @error('matricula')
+            @error('carca')
             <span>
                 <strong>{{$message}}</strong>    
             </span>    

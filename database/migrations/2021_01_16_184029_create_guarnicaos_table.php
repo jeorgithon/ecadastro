@@ -16,7 +16,7 @@ class CreateGuarnicaosTable extends Migration
         Schema::create('guarnicaos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('prefixo');
+            $table->string('prefixo')->unique();
             $table->string('descricao')->nullable();
         });
     }

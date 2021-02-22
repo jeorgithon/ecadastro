@@ -16,8 +16,8 @@ class CreateViaturasTable extends Migration
         Schema::create('viaturas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('placa');
-            $table->string('patrimonio')->nullable();
+            $table->string('placa')->unique();
+            $table->string('patrimonio');
             $table->bigInteger('km')->nullable();
             $table->string('tipo')->nullable();
             $table->string('marca')->nullable();

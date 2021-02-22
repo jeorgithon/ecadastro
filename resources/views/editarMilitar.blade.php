@@ -14,14 +14,34 @@
         <form method= "POST" action="/editarMilitar">
             
             @csrf<!--previne contra ataques, o laravel exige a tag-->
-
+            <div>
             <input type="hidden" name="id" value="{{$militar->id}}" /> <br>
             Nome Completo: <input type="text" name="nomeCompleto" value="{{$militar->nomeCompleto}}" class="form-control @error('nomeCompleto')
             is-invalid @enderror"/>
+            @error('nomeCompleto')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
+            </div>
+            <div>    
             Nome de Guerra: <input type="text" name="nomeGuerra" value="{{$militar->nomeGuerra}}"class="form-control @error('nomeGuerra')
             is-invalid @enderror"/>
+            @error('nomeGuerra')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
+            </div> 
+            <div>   
             Matricula: <input type="text" name="matricula" value="{{$militar->matricula}}"class="form-control @error('matricula')
             is-invalid @enderror"/>
+            @error('matricula')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
+            </div>    
             <div>
                 Posto/Graduação:
                     <select class="form-control" id="exampleFormControlSelect2" name="postoGraduacao" value="{{old('postoGraduacao')}}"
@@ -37,9 +57,21 @@
                     <option>TEN CEL</option>
                     <option>CEL</option>
                     </select>
-            </div>
+                @error('postograduacao')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
+            </div> 
+            <div>   
             OME: <input type="text" name="ome" value="{{$militar->ome}}"class="form-control @error('ome')
             is-invalid @enderror"/>
+            @error('ome')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+                @enderror
+            </div>    
             <div>
                 Permissão:
                     <select class="form-control" id="exampleFormControlSelect1" name="permissao" value="{{$militar->permissao}}"
@@ -53,10 +85,22 @@
                     @endif
 
                     </select>
-                </div>
+                @error('permissao')
+                    <span>
+                        <strong>{{$message}}</strong>    
+                    </span>    
+                @enderror
+            </div>    
+
+            <div>
             Email: <input type="text" name="email" value="{{$militar->email}}"class="form-control @error('email')
             is-invalid @enderror"/>
-
+            @error('email')
+                <span>
+                    <strong>{{$message}}</strong>    
+                </span>    
+            @enderror
+            </div>    
             <br>
             
             <input type="submit" value="Salvar">
