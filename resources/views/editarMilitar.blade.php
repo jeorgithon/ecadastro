@@ -8,6 +8,7 @@
     @extends('index')
     @section('content')
     <body class="antialiased">
+        <br><br>
         <h1> Editar Militar</h1>
        
         <form method= "POST" action="/editarMilitar">
@@ -21,12 +22,38 @@
             is-invalid @enderror"/>
             Matricula: <input type="text" name="matricula" value="{{$militar->matricula}}"class="form-control @error('matricula')
             is-invalid @enderror"/>
-            Posto/Graduação: <input type="text" name="postoGraduacao" value="{{$militar->postoGraduacao}}"class="form-control @error('postoGraduacao')
-            is-invalid @enderror"/>
+            <div>
+                Posto/Graduação:
+                    <select class="form-control" id="exampleFormControlSelect2" name="postoGraduacao" value="{{old('postoGraduacao')}}"
+                    class="form-control @error('postoGraduacao') is-invalid @enderror">
+                    <option>{{$militar->postoGraduacao}}</option>
+                    <option>SD</option>
+                    <option>CB</option>
+                    <option>SGT</option>
+                    <option>ST</option>
+                    <option>TEN</option>
+                    <option>CAP</option>
+                    <option>MAJ</option>
+                    <option>TEN CEL</option>
+                    <option>CEL</option>
+                    </select>
+            </div>
             OME: <input type="text" name="ome" value="{{$militar->ome}}"class="form-control @error('ome')
             is-invalid @enderror"/>
-            Permissão: <input type="text" name="permissao" value="{{$militar->permissao}}"class="form-control @error('permissao')
-            is-invalid @enderror"/>
+            <div>
+                Permissão:
+                    <select class="form-control" id="exampleFormControlSelect1" name="permissao" value="{{$militar->permissao}}"
+                    class="form-control @error('permissao') is-invalid @enderror">
+                    @if($militar->permissao == 'admin')
+                        <option value="{{$militar->permissao}}">admin</option>
+                        <option>user</option>
+                    @else
+                        <option>user</option>
+                        <option>admin</option>
+                    @endif
+
+                    </select>
+                </div>
             Email: <input type="text" name="email" value="{{$militar->email}}"class="form-control @error('email')
             is-invalid @enderror"/>
 

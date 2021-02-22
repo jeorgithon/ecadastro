@@ -8,7 +8,8 @@
     @extends('index')
     @section('content')
     <body class="antialiased">
-        <h1> Cadastrar Pessoa</h1>
+        <br><br>
+        <h1> Cadastrar Militar</h1>
        
         <form method= "POST" action="/cadastroMilitar">
             
@@ -41,8 +42,21 @@
                 @enderror
             </div>
             <div>
-                Posto/Graduação: <input type="text" name="postoGraduacao" value="{{old('postoGraduacao')}}" class="form-control @error('postoGraduacao')
-                is-invalid @enderror"/>
+                <div>
+                Posto/Graduação:
+                    <select class="form-control" id="exampleFormControlSelect2" name="postoGraduacao" value="{{old('postoGraduacao')}}"
+                    class="form-control @error('postoGraduacao') is-invalid @enderror">
+                    <option>SD</option>
+                    <option>CB</option>
+                    <option>SGT</option>
+                    <option>ST</option>
+                    <option>TEN</option>
+                    <option>CAP</option>
+                    <option>MAJ</option>
+                    <option>TEN CEL</option>
+                    <option>CEL</option>
+                    </select>
+                </div>
                 @error('postoGraduacao')
                 <span>
                     <strong>{{$message}}</strong>    
@@ -61,7 +75,6 @@
             <div>
                 <div>
                 Permissão:
-                    <label for="exampleFormControlSelect1"></label>
                     <select class="form-control" id="exampleFormControlSelect1" name="permissao" value="{{old('permissao')}}"
                     class="form-control @error('permissao') is-invalid @enderror">
                     <option>user</option>

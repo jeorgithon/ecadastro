@@ -8,6 +8,7 @@
     @extends('index')
     @section('content')
     <body class="antialiased">
+        <br><br>
         <h1> Cadastrar Cidade</h1>
        
         <form method= "POST" action="/cadastro/cidade">

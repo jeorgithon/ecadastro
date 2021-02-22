@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Adicionar Registro</title>
-
+        <title>Adicionar Registro | Ecadastro</title>
         
     </head>
+    @extends('index')
+    @section('content')
     <body class="antialiased">
+        <br><br>
         <h1>Adicionar Registro</h1>
-
-        <a href="/index">Página Inicial</a>
        
         <form method= "POST" action="/cadastro/servico/registro" autocomplete="on">
             
@@ -86,4 +86,5 @@
             <input type="submit" value="Adicionar">
         </form>
     </body>
+    @endsection
 </html>

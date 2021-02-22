@@ -6,6 +6,10 @@
         
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
 
         <title>Página inicial</title>
@@ -20,7 +24,15 @@
 
         <style>
             body {
-                font-family: 'Nunito';
+                font-family: 'Nunito';;
+            }
+            
+            .navbar{
+                z-index: 2;
+                position: fixed;
+                top: 0;
+                left:0;
+                width:100%;
             }
 
             /* Fixed sidenav, full height */
@@ -91,9 +103,9 @@
          
     </head>
     <body>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
+        
+        
+        
         <div id="app2">       
             <nav class="navbar navbar-expand-md navbar-dark bg-dark shaddow-sm">
                 <div class="container">
@@ -161,60 +173,9 @@
                                 <a href="/cadastro/servico">Cadastrar Serviços</a>
                                 <a href="/listar/servico">Listar Serviços</a>
                             </div>
-                        </div>
-                        <!--
-                        <div class = "list-group">
-                            <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
-                                Militar
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastroMilitar'">Cadastro de Militar</button>
-                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/militar'">Listar Militares</button>
-                                </div>
-                            </div>
-                            <div class="btn-group" style="padding-top: 3px">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
-                                Viaturas
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/viatura'">Cadastro de Viaturas</button>
-                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/viatura'">Listar Viaturas</button>
-                                </div>
-                            </div>
-                            <div class="btn-group" style="padding-top: 3px">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
-                                Guarnição
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/guarnicao'">Cadastro de Guarnição</button>
-                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/guarnicao'">Listar Guarnições</button>
-                                </div>
-                            </div>
-                            <div class="btn-group" style="padding-top: 3px">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
-                                Cidade
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/cidade'">Cadastro de Cidade</button>
-                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/cidade'">Listar Cidades</button>
-                                </div>
-                            </div>
-                            <div class="btn-group" style="padding-top: 3px">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
-                                Serviços
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" onclick="document.location='/cadastro/servico'">Cadastro de Serviços</button>
-                                    <button class="dropdown-item" type="button" onclick="document.location='/listar/servico'">Listar Serviços</button>
-                                </div>
-                            </div>
+                        </div>                    
 
-                        </div>
-                        -->
-                    
-
-                <div class="col-md-12">
+                <div id="pagectr" class="container">
                     @yield('content')
                 </div>
             </div>
