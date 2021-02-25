@@ -12,6 +12,8 @@ class Servico extends Model
 
 	public static $rules = ['dataHoraInicial'=>'required', 'dataHoraFinal'=>'required',
 	  'guarnicao_id'=>'required|numeric', 'cidade_id'=>'required|numeric'];
+
+	public static $rulesList = ['dataHoraInicial'=>'required', 'dataHoraFinal'=>'required'];  
 	
 	public static $messages = ['dataHoraInicial.*'=>'Campo Obrigatório', 'dataHoraFinal.*'=>'Campo Obrigatório',
 	  'guarnicao_id.*'=>'Campo Obrigatório', 'cidade_id.*'=>'Campo Obrigatório'];

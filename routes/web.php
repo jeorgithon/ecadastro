@@ -70,6 +70,10 @@ Route::get('/cadastro/servico/registro', [ServicoController::class, 'buscarRegis
 Route::post('/cadastro/servico/registro', [ServicoController::class, 'adicionarRegistro']);
 Route::post('/cadastro/servico', [ServicoController::class, 'salvar']);
 Route::get('/listar/servico', [ServicoController::class, 'listar']);
+//teste
+Route::post('/listar/servicos', [ServicoController::class, 'view']);
+Route::get('/listar/servicos/get/data', [ServicoController::class, 'getDate']);
+//end teste
 Route::get('/remover/servico/{id}', [ServicoController::class, 'remover']);
 Route::get('/remover/registro/{id}', [ServicoController::class, 'removerRegistro']);
 Route::get('/editar/servico/{id}', [ServicoController::class, 'getEditar']);

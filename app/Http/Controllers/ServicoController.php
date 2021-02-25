@@ -123,7 +123,7 @@ class ServicoController extends Controller
             $r->session()->put('registro', $listRegistro);
 
             
-            return redirect('listar/servico');
+            return redirect('/index');
         } catch (\App\Validator\ValidatorException $th) {
             $listGuarnicao = Guarnicao::all();
             $listCidade = Cidade::all();
@@ -136,14 +136,32 @@ class ServicoController extends Controller
     {
         $this->authorize('view', \App\Models\Servico::class);
         $listaServico  = Servico::all();
-        // $registros = DB::table('registros')->where('militar_id','=',$reg['militar_id'])
-        // ->join('servicos', 'servicos.id','=', 'registros.servico_id')
-        // -> where('servicos.dataHoraFinal', '<', $data['dataHoraInicial'])
-        // ->first();
-        $listServico = DB::table('servicos')->get();
-
-        //dd($listaServico);
         return view('listarServico', ['lista' => $listaServico]);
+    }
+
+    public function view(Request $r)
+    {
+        $this->authorize('view', \App\Models\Servico::class);
+        try {
+            \App\Validator\ListarServicosValidator::validate($r->all());
+                $intervalos = $r->all();
+                $servicos = \App\Models\Servico::
+                where('dataHoraInicial','>=', $intervalos['dataHoraInicial'])
+                ->where('dataHoraInicial','<=', $intervalos['dataHoraFinal'])
+                ->get(); 
+                return view('listarServico', ['lista' => $servicos]);
+        } catch (\App\Validator\ValidatorException $th) {
+            return redirect('/listar/servicos/get/data')->withErrors($th->getValidator())->withInput();
+        }
+
+       
+    }
+
+    
+    public function getDate()
+    {
+        $this->authorize('view', \App\Models\Servico::class);
+        return view('getdate');
     }
 
 

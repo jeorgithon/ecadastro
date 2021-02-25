@@ -171,7 +171,9 @@
                             </button>
                             <div class="dropdown-container">
                                 <a href="/cadastro/servico">Cadastrar Serviços</a>
-                                <a href="/listar/servico">Listar Serviços</a>
+                                <a href="/listar/servicos/get/data">Listar Serviços por Período</a>
+                                <a href="/listar/servico">Listar Todos os Serviços</a>
+
                             </div>
                         </div>                    
 
