@@ -142,37 +142,57 @@
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
+                                @can('create', \App\Models\Militar::class)
                                 <a href="/cadastroMilitar">Cadastrar Militar</a>
+                                @endcan
+                                @can('view', \App\Models\Militar::class)
                                 <a href="/listar/militar">Listar Militar</a>
+                                @endcan
                             </div>
                             <button class="dropdown-btn">Viatura 
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
+                                @can('create', \App\Models\Viatura::class)
                                 <a href="/cadastro/viatura">Cadastrar Viatura</a>
+                                @endcan
+                                @can('view', \App\Models\Viatura::class)
                                 <a href="/listar/viatura">Listar Viatura</a>
+                                @endcan
                             </div>
                             <button class="dropdown-btn">Guarnição 
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
+                                @can('create', \App\Models\Guarnicao::class)
                                 <a href="/cadastro/guarnicao">Cadastrar Guarnição</a>
+                                @endcan
+                                @can('view', \App\Models\Guarnicao::class)
                                 <a href="/listar/guarnicao">Listar Guarnição</a>
+                                @endcan
                             </div>
                             <button class="dropdown-btn">Cidade 
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
+                                @can('create', \App\Models\Cidade::class)
                                 <a href="/cadastro/cidade">Cadastrar Cidade</a>
+                                @endcan
+                                @can('view', \App\Models\Cidade::class)
                                 <a href="/listar/cidade">Listar Cidade</a>
+                                @endcan
                             </div>
                             <button class="dropdown-btn">Serviços 
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
+                                @can('create', \App\Models\Servico::class)
                                 <a href="/cadastro/servico">Cadastrar Serviços</a>
+                                @endcan
+                                @can('view', \App\Models\Servico::class)
                                 <a href="/listar/servicos/get/data">Listar Serviços por Período</a>
                                 <a href="/listar/servico">Listar Todos os Serviços</a>
+                                @endcan
 
                             </div>
                         </div>                    
