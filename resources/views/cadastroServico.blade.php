@@ -10,6 +10,7 @@
     <body class="antialiased">
         <br><br>
         <h1> Cadastrar Serviço</h1>
+<<<<<<< HEAD
        
         {{-- <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#addRegistro" data-bs-whatever="@teste">
@@ -63,6 +64,8 @@
             </div>
         </div>
         </div> --}}
+=======
+>>>>>>> fd0299962512f7320c64c0c1dd16dc64565a6434
 
         <form method= "POST" action="/cadastro/servico">
             
