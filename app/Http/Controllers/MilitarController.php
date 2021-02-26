@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Militar;
+use App\Models\Contato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,10 +21,14 @@ class MilitarController extends Controller
     try {
       \App\Validator\MilitarValidator::validate($r->all());
       $militar =  Militar::create($r->all());
-      $militar->contatos()->saveMany([
-        new \App\Models\Contato(['contato' => $r->celular]),
-        new \App\Models\Contato(['contato' => $r->fixo])
-      ]);
+      if($r->celular != null){
+        $militar->contatos()->saveMany([
+          new \App\Models\Contato(['contato' => $r->celular])]);
+      }
+      if($r->fixo != null){
+        $militar->contatos()->saveMany([new \App\Models\Contato(['contato' => $r->fixo])]);
+      }
+      
       
       $user = new \App\Models\User();
       $user->name = $r->nomeCompleto;
@@ -62,7 +67,9 @@ class MilitarController extends Controller
   {
     $this->authorize('update', \App\Models\Militar::class);
     $militar =  Militar::find($id);
+    //dd($militar->contatos);
     return view('editarMilitar', ['militar' => $militar]);
+
   }
 
   public function editar(Request $r)
@@ -78,6 +85,17 @@ class MilitarController extends Controller
         $militar->ome = $r->ome;
         $militar->permissao = $r->permissao;
         $militar->update();
+        dd($r->contato1);
+        if($r->contato1 == null){
+
+        }
+        $contato1 = Contato::find($r->contato1); 
+        $contato1->contato = $r->celular;
+        $contato1->update();
+        $contato2 = Contato::find($r->contato2);
+        $contato2->contato = $r->fixo;
+        $contato2->update();
+        
         return redirect('listar/militar');
     } catch (\App\Validator\ValidatorException $th) {
       $militar =  Militar::find($r->id);

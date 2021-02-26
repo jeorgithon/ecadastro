@@ -101,7 +101,19 @@
                 </span>    
             @enderror
             </div>    
-            <br>
+            @if ($militar->contatos != null)
+                @if (0 >count($militar->contatos))
+                    <input type="hidden" name="contato1" value="{{$militar->contatos[0]['id']}}" /> 
+                    Celular: <input type="text" name="celular" value="{{$militar->contatos[0]['contato']}}"
+                    class="form-control @error('celular') is-invalid @enderror"/>
+                    @if (2>= count($militar->contatos))
+                        <input type="hidden" name="contato2" value="{{$militar->contatos[1]['id']}}" /> 
+                        Telefone Residecial: <input type="text" name="fixo" value="{{$militar->contatos[1]['contato']}}"
+                        class="form-control @error('fixo') is-invalid @enderror"/>
+                    @endif
+                @endif                
+            @endif
+            
             
             <input type="submit" value="Salvar">
         </form>
