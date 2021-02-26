@@ -26,28 +26,29 @@ class MilitarFactory extends Factory
         $vetorPostGras = ['SD', 'CB', 'SGT', 'ST', 'TEN', 'CAP', 'MAJ', 'TEN CEL', 'CEL'];
         $indece = random_int(0,8);
         $grad = $vetorPostGras[$indece];
-        $matricula = random_int(1000, 2000);
+        $matricula = random_int(1000000, 2000000);
         $mat = strval($matricula);
 
         $vetorPermissao = ['admin',  'user'];
         $indece = random_int(0,1);
         $permissao =$vetorPermissao[$indece];
-        static $iterador = 0;
         
-        $iterador = $iterador + 1;
-        if($iterador == 1){
-            return [
-                'nomeCompleto' => "Administrador do Sistema",
-                'nomeGuerra' => "Administrador",
-                'matricula' => "12345678",
-                'postoGraduacao' => "SD",
-                'ome' => "9º BPM",
-                'permissao' => "admin",
-                'email' => "admin@gmail.com",
-                'user_id' => 1
-            ];
+        //cria um usuário padrão, porém atrapalhou os casos de teste, por isso comentei.
+        // static $iterador = 0;
+        // $iterador = $iterador + 1;
+        // if($iterador == 1){
+        //     return [
+        //         'nomeCompleto' => "Administrador do Sistema",
+        //         'nomeGuerra' => "Administrador",
+        //         'matricula' => "12345678",
+        //         'postoGraduacao' => "SD",
+        //         'ome' => "9º BPM",
+        //         'permissao' => "admin",
+        //         'email' => "admin@gmail.com",
+        //         'user_id' => 1
+        //     ];
 
-        }
+        // }
 
         return [
             'nomeCompleto' => $this->faker->firstName,

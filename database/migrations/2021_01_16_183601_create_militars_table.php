@@ -20,7 +20,7 @@ class CreateMilitarsTable extends Migration
             $table->string('nomeGuerra');
             $table->string('matricula')->unique();
             $table->string('postoGraduacao');
-            $table->string('ome')->nullable();
+            $table->string('ome');
             $table->string('permissao');
             $table->string('email')->unique();
 

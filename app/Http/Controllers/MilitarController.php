@@ -37,9 +37,6 @@ class MilitarController extends Controller
     } catch (\App\Validator\ValidatorException $th) {
 
       return redirect('cadastroMilitar')->withErrors($th->getValidator())->withInput();
-    }  catch (\Illuminate\Database\QueryException $th) {
-      //Está aqui por redundância, mas já está sendo tratada na validação.
-      echo "Email ou matricula já existe no sistema.";
     }
   }
 

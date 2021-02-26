@@ -12,7 +12,7 @@ class CidadeValidator extends \Exception
 
         if(!$validator->errors()->isEmpty() )
         {
-            throw new ValidatorException($validator, "Erro na validação de Viatura");
+            throw new ValidatorException($validator, "Erro na validação da Cidade");
         }
 
     }
