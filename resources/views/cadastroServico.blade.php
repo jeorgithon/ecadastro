@@ -10,59 +10,6 @@
     <body class="antialiased">
         <br><br>
         <h1> Cadastrar Serviço</h1>
-       
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#addRegistro" data-bs-whatever="@teste">
-        Registrar Militar
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="addRegistro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Registrar Militar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="form-label">Militar</label>
-                    <input type="text" class="form-control" id="registroMilitar">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFuncao" class="form-label">Função</label>
-                    <div class="form-check">
-                        <input class="form-label" type="checkbox" value="" id="flexCheckDefaultComandante">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Comandante
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input class="form-label" type="checkbox" value="" id="flexCheckDefaultMotorista">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Motorista
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="form-label">Viatura</label>
-                    <input type="text" class="form-control" id="viaturaMilitar">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="form-label">KM</label>
-                    <input type="number" class="form-control" id="kmViatura">
-                </div>
-
-            </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                <button type="button" class="btn btn-primary">Registrar</button>
-            </div>
-            </div>
-        </div>
-        </div>
 
         <form method= "POST" action="/cadastro/servico">
             
