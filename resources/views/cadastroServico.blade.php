@@ -11,7 +11,7 @@
         <br><br>
         <h1> Cadastrar Serviço</h1>
        
-        <!-- Button trigger modal -->
+        {{-- <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#addRegistro" data-bs-whatever="@teste">
         Registrar Militar
         </button>
@@ -62,7 +62,7 @@
             </div>
             </div>
         </div>
-        </div>
+        </div> --}}
 
         <form method= "POST" action="/cadastro/servico">
             
