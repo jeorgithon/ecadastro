@@ -67,7 +67,6 @@ class MilitarController extends Controller
   {
     $this->authorize('update', \App\Models\Militar::class);
     $militar =  Militar::find($id);
-    //dd($militar->contatos);
     return view('editarMilitar', ['militar' => $militar]);
 
   }
@@ -85,16 +84,29 @@ class MilitarController extends Controller
         $militar->ome = $r->ome;
         $militar->permissao = $r->permissao;
         $militar->update();
-        dd($r->contato1);
-        if($r->contato1 == null){
-
+        \App\Validator\ContatoValidator::validate($r->all());
+        if($r->contato1 != null){
+          $contato1 = Contato::find($r->contato1); 
+          $contato1->contato = $r->celular;
+          $contato1->update();
+        } else{
+          if($r->celular != null){
+            $militar->contatos()->saveMany([
+              new \App\Models\Contato(['contato' => $r->celular])]);
+          }
         }
-        $contato1 = Contato::find($r->contato1); 
-        $contato1->contato = $r->celular;
-        $contato1->update();
-        $contato2 = Contato::find($r->contato2);
-        $contato2->contato = $r->fixo;
-        $contato2->update();
+
+        if($r->contato2 != null){
+          $contato2 = Contato::find($r->contato2);
+          $contato2->contato = $r->fixo;
+          $contato2->update();
+        } else{
+          if($r->fixo != null){
+            $militar->contatos()->saveMany([new \App\Models\Contato(['contato' => $r->fixo])]);
+          }
+        }
+        
+       
         
         return redirect('listar/militar');
     } catch (\App\Validator\ValidatorException $th) {

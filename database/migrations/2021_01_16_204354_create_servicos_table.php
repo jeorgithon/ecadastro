@@ -19,7 +19,6 @@ class CreateServicosTable extends Migration
             $table->dateTime('dataHoraInicial');
             $table->dateTime('dataHoraFinal');
             $table->string('observacao')->nullable();
-            $table->string('nota')->nullable();
             
             $table->bigInteger('guarnicao_id');
             $table->foreign('guarnicao_id')->references('id')->on('guarnicaos')->onDelete('cascade');

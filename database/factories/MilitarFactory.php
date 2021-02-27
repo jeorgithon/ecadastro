@@ -26,7 +26,7 @@ class MilitarFactory extends Factory
         $vetorPostGras = ['SD', 'CB', 'SGT', 'ST', 'TEN', 'CAP', 'MAJ', 'TEN CEL', 'CEL'];
         $indece = random_int(0,8);
         $grad = $vetorPostGras[$indece];
-        $matricula = random_int(1000000, 2000000);
+        $matricula = random_int(10000000, 99999999);
         $mat = strval($matricula);
 
         $vetorPermissao = ['admin',  'user'];

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use \App\Models\User;
 use \App\Models\Cidade;
+use \App\Models\Militar;
 
 class CreateCidadeTest extends TestCase
 {
@@ -27,19 +28,19 @@ class CreateCidadeTest extends TestCase
     }
 
     public function testUsuarioLogadoSemPermissaoCreateCidade() {
-        $militar = Cidade::where('permissao', '=', 'user')
+        $militar = Militar::where('permissao', '=', 'user')
         ->where('user_id', '!=', null)->first();
         $response = $this
-            ->actingAs($cidade->user)
+            ->actingAs($militar->user)
             ->get('/cadastro/cidade')
             ->assertStatus(403);
     }
 
-    public function testUsuarioLogadoComPermissaoCreateMilitar() {
-        $cidade = Cidade::where('permissao', '=', 'admin')
+    public function testUsuarioLogadoComPermissaoCreateCidade() {
+        $militar = Militar::where('permissao', '=', 'admin')
         ->where('user_id', '!=', null)->first();
         $response = $this
-            ->actingAs($cidade->user)
+            ->actingAs($militar->user)
             ->get('/cadastro/cidade')
             ->assertStatus(200);
     }
@@ -54,10 +55,10 @@ class CreateCidadeTest extends TestCase
 
     public function testUsuarioLogadoSemPermissaoEnviaForm() {
         $dados = $this->inicializarArrayCidade();
-        $cidade = Cidade::where('permissao', '=', 'user')
+        $militar = Militar::where('permissao', '=', 'user')
         ->where('user_id', '!=', null)->first();
         $response = $this
-            ->actingAs($cidade->user)
+            ->actingAs($militar->user)
             ->post('/cadastro/cidade', $dados)
             ->assertStatus(403);
     }
